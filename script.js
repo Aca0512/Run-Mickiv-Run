@@ -20,6 +20,13 @@ const winScreen = document.getElementById('win-screen');
 const initialObstacle3Speed = 5; // Store initial speed for reset
 const backgroundSound = document.getElementById('background-sound')
 const mickiv = document.getElementById('mickiv');
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+if (isMobile) {
+  dino.style.width = '20vw';
+  cactus.style.width = '10vw';
+  // ... sesuaikan ukuran elemen lainnya
+}
 
 // Function to display and move obstacle3
 function moveObstacle3() {
@@ -437,3 +444,38 @@ document.addEventListener('touchstart', function(e) {
   // Fungsi untuk menangani sentuhan di perangkat mobile
 });
 
+// Menambahkan event listener untuk mendeteksi ketukan pada layar
+window.addEventListener('touchstart', function(event) {
+  // Pastikan bahwa dino hanya melompat jika belum sedang melompat
+  if (!isJumping) {
+      jump();
+  }
+});
+
+function jump() {
+  // Logika untuk melompat
+  isJumping = true;
+  // Kode untuk animasi lompat dan logika permainan
+}
+
+window.addEventListener('resize', () => {
+  // Sesuaikan ukuran elemen game ketika jendela diubah ukurannya
+  const gameContainer = document.getElementById('game-container');
+  gameContainer.style.width = '100vw';
+  gameContainer.style.height = '100vh';
+});
+
+// Replace keyboard event listener with touch event listener
+document.addEventListener('touchstart', (event) => {
+  if (event.target.id === 'dino') {
+    jump();
+  }
+});
+
+function updateFontSize() {
+  const fontSize = window.innerWidth > 480 ? 16 : 14; // Adjust based on screen size
+  document.documentElement.style.fontSize = `${fontSize}px`;
+}
+
+window.addEventListener('resize', updateFontSize);
+updateFontSize(); // Call on initial load
