@@ -20,73 +20,6 @@ const winScreen = document.getElementById('win-screen');
 const initialObstacle3Speed = 5; // Store initial speed for reset
 const backgroundSound = document.getElementById('background-sound')
 const mickiv = document.getElementById('mickiv');
-// Mendapatkan elemen-elemen
-const registerButton = document.getElementById('register-button');
-const registerOverlay = document.getElementById('register-overlay');
-const closeRegister = document.getElementById('close-register');
-const registrationForm = document.getElementById('registration-form');
-const showLogin = document.getElementById('show-login');
-
-// Membuka overlay registrasi
-registerButton.addEventListener('click', () => {
-  registerOverlay.style.display = 'flex';
-});
-
-// Menutup overlay registrasi
-closeRegister.addEventListener('click', () => {
-  registerOverlay.style.display = 'none';
-});
-
-// Menangani pengiriman formulir registrasi
-registrationForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  
-  // Mengambil nilai dari formulir
-  const username = document.getElementById('username').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const password = document.getElementById('password').value;
-  const confirmPassword = document.getElementById('confirm-password').value;
-  
-  // Validasi sederhana
-  if (password !== confirmPassword) {
-    alert('Password dan konfirmasi password tidak cocok!');
-    return;
-  }
-
-  // Di sini Anda biasanya akan mengirim data ke server untuk registrasi
-  // Misalnya menggunakan fetch API:
-  /*
-  fetch('/register', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ username, email, password })
-  })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      alert('Registrasi berhasil!');
-      registerOverlay.style.display = 'none';
-    } else {
-      alert('Registrasi gagal: ' + data.message);
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('Terjadi kesalahan saat registrasi.');
-  });
-  */
-  
-  // Reset formulir
-  registrationForm.reset();
-});
-
-// Menangani tampilan login jika diperlukan
-showLogin.addEventListener('click', (e) => {
-  e.preventDefault();
-  // Implementasikan tampilan login jika Anda memiliki overlay login
-});
 
 // Function to display and move obstacle3
 function moveObstacle3() {
@@ -500,18 +433,7 @@ function showWinScreen() {
     backgroundSound.loop = true; // Loop the sound continuously
 });
 
-// Show login form when login button is clicked
-document.getElementById('register-button').addEventListener('click', function() {
-  document.getElementById('login-overlay').style.display = 'flex';
+document.addEventListener('touchstart', function(e) {
+  // Fungsi untuk menangani sentuhan di perangkat mobile
 });
 
-// Close login form
-document.getElementById('close-login').addEventListener('click', function() {
-  document.getElementById('login-overlay').style.display = 'none';
-});
-
-// Show register form from login form
-document.getElementById('show-register').addEventListener('click', function() {
-  document.getElementById('login-overlay').style.display = 'none';
-  document.getElementById('register-overlay').style.display = 'flex';
-});
