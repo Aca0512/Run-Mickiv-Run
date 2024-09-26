@@ -39,6 +39,7 @@ function moveObstacle3() {
 }
 
 function startGame() {
+    lockToLandscape();
     // Stop the background sound when the game starts
     backgroundSound.pause();
     backgroundSound.currentTime = 0; // Reset the sound to the beginning
@@ -67,6 +68,9 @@ function startGame() {
 }
 
 function gameOver() {
+  if (screen.orientation && screen.orientation.unlock) {
+    screen.orientation.unlock();  // Unlock orientation
+    }
     // Stop the game animation
     clearInterval(gameInterval);
     clearInterval(moveObstacle3Interval);
@@ -474,3 +478,21 @@ function requestFullscreen() {
 }
 
 // Call requestFullscreen() when appropriate (e.g., on start game)
+
+function lockToLandscape() {
+  if (isMobile() && screen.orientation && screen.orientation.lock) {
+    screen.orientation.lock('landscape').catch((err) => {
+      console.error("Orientation lock error:", err);
+    });
+  }
+}
+
+function checkOrientation() {
+  if (isMobile() && window.innerHeight > window.innerWidth) {
+    alert("Please rotate your device to landscape mode for better gameplay.");
+  }
+}
+
+window.addEventListener('resize', checkOrientation);
+document.addEventListener('DOMContentLoaded', checkOrientation);
+
