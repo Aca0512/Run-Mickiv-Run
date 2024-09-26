@@ -576,3 +576,35 @@ background-color: #e1306c;
     height: 100vh;
   }
 }
+
+/* CSS untuk menyesuaikan tampilan di perangkat mobile */
+@media only screen and (max-width: 600px) {
+  #dino {
+    width: 60px;
+    height: auto;
+  }
+
+  #cactus, #obstacle2, #obstacle3 {
+    width: 40px;
+    height: auto;
+  }
+
+  #game-over-overlay, #win-screen {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #grass {
+    height: 40px;
+  }
+
+  #start-overlay, #game-over-overlay, #win-screen {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  body {
+    transform: rotate(90deg); /* Rotasi tampilan saat mode landscape */
+    transform-origin: center;
+  }
+}
