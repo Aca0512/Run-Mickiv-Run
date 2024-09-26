@@ -226,39 +226,6 @@ function resetGame() {
     jumpCount = 2;
 }
 
-function jump() {
-    if (!isJumping && !isGameOver && gameStarted > 0 && jumpCount > 0 && !jumpCooldown) {
-      isJumping = true;
-      jumpCooldown = true; // Set cooldown after a jump
-  
-      // Play jump sound
-      jumpSound.play(); // Ensure audio file is linked correctly
-  
-      jumpCount--;
-  
-      // Dino jump animation
-      dino.src = 'image/Mickiv Walk Cycle-04.png'; // Replace with your jump image
-      dino.style.transition = 'none';
-      dino.style.bottom = '250px'; // Move dino up for jump
-  
-      setTimeout(() => {
-        dino.style.transition = 'bottom 0.3s ease';
-        dino.style.left = '100px'; // Adjust left position if needed
-        dino.style.bottom = '-30px'; // Move dino down after jump
-        dino.style.transition = 'bottom 0.3s ease'; // Reset transition for bottom
-        isJumping = false;
-        jumpCount = jumpCount === 0 ? 2 : jumpCount; // Reset jump count after landing
-  
-        // Reset jump cooldown after a short delay
-        setTimeout(() => {
-          jumpCooldown = false;
-        }, 150); // Adjust cooldown duration as needed
-  
-        dino.src = runImages[currentRunImageIndex]; // Return to running image
-      }, 470); // Adjust jump duration as needed
-    }
-  }
-
 function detectCollision(element) {
     const dinoRect = dino.getBoundingClientRect();
     const elementRect = element.getBoundingClientRect();
@@ -432,3 +399,58 @@ function showWinScreen() {
     backgroundSound.play();
     backgroundSound.loop = true; // Loop the sound continuously
 });
+
+// Fungsi untuk mendeteksi apakah perangkat adalah mobile
+function isMobile() {
+  // Cek apakah user agent mengandung kata kunci seperti 'mobile', 'Android', 'iPhone', dll.
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Fungsi untuk membuat karakter melompat
+function jump() {
+  if (!isJumping && !isGameOver && gameStarted > 0 && jumpCount > 0 && !jumpCooldown) {
+    isJumping = true;
+    jumpCooldown = true; // Set cooldown after a jump
+
+    // Play jump sound
+    jumpSound.play(); // Ensure audio file is linked correctly
+
+    jumpCount--;
+
+    // Dino jump animation
+    dino.src = 'image/Mickiv Walk Cycle-04.png'; // Replace with your jump image
+    dino.style.transition = 'none';
+    dino.style.bottom = '250px'; // Move dino up for jump
+
+    setTimeout(() => {
+      dino.style.transition = 'bottom 0.3s ease';
+      dino.style.left = '100px'; // Adjust left position if needed
+      dino.style.bottom = '-30px'; // Move dino down after jump
+      dino.style.transition = 'bottom 0.3s ease'; // Reset transition for bottom
+      isJumping = false;
+      jumpCount = jumpCount === 0 ? 2 : jumpCount; // Reset jump count after landing
+
+      // Reset jump cooldown after a short delay
+      setTimeout(() => {
+        jumpCooldown = false;
+      }, 150); // Adjust cooldown duration as needed
+
+      dino.src = runImages[currentRunImageIndex]; // Return to running image
+    }, 470); // Adjust jump duration as needed
+  }
+}
+// Event listener untuk PC (spasi)
+if (!isMobile()) {
+  document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+      jump();
+    }
+  });
+}
+
+// Event listener untuk mobile (ketuk layar)
+if (isMobile()) {
+  document.addEventListener('touchstart', () => {
+    jump();
+  });
+}
