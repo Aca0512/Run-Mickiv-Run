@@ -454,3 +454,23 @@ if (isMobile()) {
     jump();
   });
 }
+
+window.addEventListener('orientationchange', () => {
+  if (screen.orientation.type === 'landscape') {
+    // Apply landscape styles (optional)
+  } else {
+    // Apply portrait styles (optional)
+  }
+});
+
+function requestFullscreen() {
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari */
+    document.documentElement.webkitRequestFullscreen();
+  } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+    document.documentElement.mozRequestFullScreen();
+  }
+}
+
+// Call requestFullscreen() when appropriate (e.g., on start game)
