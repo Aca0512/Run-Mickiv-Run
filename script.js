@@ -39,32 +39,31 @@ function moveObstacle3() {
 }
 
 function startGame() {
-    lockToLandscape();
-    // Stop the background sound when the game starts
-    backgroundSound.pause();
-    backgroundSound.currentTime = 0; // Reset the sound to the beginning
+  lockToLandscape();
+  backgroundSound.pause();
+  backgroundSound.currentTime = 0;
 
-    startOverlay.style.display = 'none'; // Hide the start overlay
-    dino.style.display = 'block'; // Show Dino
-    cactus.style.display = 'block'; // Show cactus
-    obstacle2.style.display = 'block'; // Show obstacle2
-    obstacle3.style.display = 'block'; // Show obstacle3
+  startOverlay.style.display = 'none';
+  dino.style.display = 'block';
+  cactus.style.display = 'block';
+  obstacle2.style.display = 'block';
+  obstacle3.style.display = 'block';
 
-    cactusSpeed = initialCactusSpeed; // Reset cactus speed
-    obstacle2Speed = initialObstacle2Speed; // Reset obstacle2 speed
-    obstacle3Speed = initialObstacle3Speed; // Set obstacle3 speed to match cactus and obstacle2
+  cactusSpeed = initialCactusSpeed;
+  obstacle2Speed = initialObstacle2Speed;
+  obstacle3Speed = initialObstacle3Speed;
 
-    cactus.style.right = '-100px'; // Reset cactus position
-    obstacle2.style.right = '-700px'; // Reset obstacle2 position further back
-    obstacle3.style.right = '-400px'; // Position obstacle3 between cactus and obstacle2
+  // Atur posisi awal berdasarkan lebar layar
+  cactus.style.right = `${-0.2 * window.innerWidth}px`; // Posisi cactus 20% dari lebar layar
+  obstacle2.style.right = `${-0.7 * window.innerWidth}px`; // Posisi obstacle2 50% dari lebar layar
+  obstacle3.style.right = `${-0.4 * window.innerWidth}px`; // Posisi obstacle3 40% dari lebar layar
 
-    if (grass) grass.style.animation = 'grass-animation infinite linear'; // Start grass animation
+  if (grass) grass.style.animation = 'grass-animation infinite linear';
 
-    startRunAnimation(); // Start Dino's running animation
-
-    gameStarted = true; // Set the gameStarted flag to true
-    gameInterval = setInterval(updateGame, 20); // Start the game loop
-    moveObstacle3(); // Start moving obstacle3
+  startRunAnimation();
+  gameStarted = true;
+  gameInterval = setInterval(updateGame, 20);
+  moveObstacle3();
 }
 
 function gameOver() {
@@ -100,53 +99,45 @@ function gameOver() {
 }
 
 function updateGame() {
-    if (!gameStarted || isGameOver) return;
+  if (!gameStarted || isGameOver) return;
 
-    // Other game logic...
+  // Update posisi berdasarkan kecepatan
+  const cactusPosition = parseInt(window.getComputedStyle(cactus).getPropertyValue('right'));
+  cactus.style.right = `${cactusPosition + cactusSpeed}px`;
 
-    // Match the speed of obstacle3 with cactus and obstacle2
-    obstacle3Speed = cactusSpeed;
+  const obstacle2Position = parseInt(window.getComputedStyle(obstacle2).getPropertyValue('right'));
+  obstacle2.style.right = `${obstacle2Position + obstacle2Speed}px`;
 
-    // Update positions for cactus, obstacle2, and obstacle3
-    const cactusPosition = parseInt(window.getComputedStyle(cactus).getPropertyValue('right'));
-    cactus.style.right = `${cactusPosition + cactusSpeed}px`;
+  const obstacle3Position = parseInt(window.getComputedStyle(obstacle3).getPropertyValue('right'));
+  obstacle3.style.right = `${obstacle3Position + obstacle3Speed}px`;
 
-    const obstacle2Position = parseInt(window.getComputedStyle(obstacle2).getPropertyValue('right'));
-    obstacle2.style.right = `${obstacle2Position + obstacle2Speed}px`;
+  // Reset posisi jika keluar dari layar, sesuaikan dengan lebar layar
+  if (cactusPosition > window.innerWidth) {
+      cactus.style.right = `${-0.2 * window.innerWidth}px`;
+      score++;
+      scoreElement.innerText = `Score: ${score}`;
+  }
 
-    const obstacle3Position = parseInt(window.getComputedStyle(obstacle3).getPropertyValue('right'));
-    obstacle3.style.right = `${obstacle3Position + obstacle3Speed}px`;
+  if (obstacle2Position > window.innerWidth) {
+      obstacle2.style.right = `${-0.5 * window.innerWidth}px`;
+      score++;
+      scoreElement.innerText = `Score: ${score}`;
+  }
 
-    // Reset positions after moving off screen
-    if (cactusPosition > window.innerWidth) {
-        cactus.style.right = '-100px';
-        score++;
-        scoreElement.innerText = `Score: ${score}`;
-    }
+  if (obstacle3Position > window.innerWidth) {
+      obstacle3.style.right = `${-0.4 * window.innerWidth}px`;
+      score++;
+      scoreElement.innerText = `Score: ${score}`;
+  }
 
-    if (obstacle2Position > window.innerWidth) {
-        obstacle2.style.right = '-700px'; // Ensure obstacle2 starts from the correct position
-        score++;
-        scoreElement.innerText = `Score: ${score}`;
-    }
-
-    if (obstacle3Position > window.innerWidth) {
-        obstacle3.style.right = '-100px'; // Ensure obstacle3 starts from the correct position
-        score++;
-        scoreElement.innerText = `Score: ${score}`;
-    }
-
-    // Check for collisions, including obstacle3
-    if (detectCollision(cactus) || detectCollision(obstacle2)) {
-        isGameOver = true;
-        collisionSound.play();
-        finalScore.innerText = score;
-        gameOverOverlay.style.display = 'flex';
-        clearInterval(runAnimationInterval); // Stop running animation
-        clearInterval(gameInterval); // Stop the game loop
-        clearInterval(moveObstacle3Interval); // Stop obstacle3 movement
-        return;
-    }
+  // Cek untuk benturan
+  if (detectCollision(cactus) || detectCollision(obstacle2)) {
+      isGameOver = true;
+      collisionSound.play();
+      finalScore.innerText = score;
+      gameOverOverlay.style.display = 'flex';
+      clearInterval(runAnimationInterval);
+  }
 }
 
 function restartGame() {
@@ -233,7 +224,7 @@ function resetGame() {
 function detectCollision(element) {
     const dinoRect = dino.getBoundingClientRect();
     const elementRect = element.getBoundingClientRect();
-    const padding = -80; // Adjust the padding as needed to refine collision detection
+    const padding = -1080; // Adjust the padding as needed to refine collision detection
     return !(
         dinoRect.right < elementRect.left - padding ||
         dinoRect.left > elementRect.right + padding ||
@@ -495,4 +486,3 @@ function checkOrientation() {
 
 window.addEventListener('resize', checkOrientation);
 document.addEventListener('DOMContentLoaded', checkOrientation);
-
