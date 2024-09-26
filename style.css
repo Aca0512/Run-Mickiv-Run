@@ -21,6 +21,7 @@
   }
 }
 
+/* Default CSS (untuk layar desktop) */
 #dino {
   position: absolute;
   bottom: -29px;
@@ -32,12 +33,98 @@
 #cactus {
   position: absolute;
   bottom: -20px;
-  right: 130px; /* Start off-screen */
+  right: 130px;
   width: 110px;
   height: 70px;
   background-image: url('image/Asset 14 .png');
   background-size: cover;
   animation: cactus-pulse 2s infinite;
+}
+
+#obstacle2 {
+  position: absolute;
+  bottom: -1px;
+  right: -400px;
+  width: 100px;
+  height: 110px;
+  background: url('image/Asset\ 11.png') no-repeat center center;
+  background-size: cover;
+  animation: obstacle2-pulse 2s infinite;
+}
+
+/* CSS untuk menyesuaikan ukuran pada perangkat mobile */
+@media (max-width: 768px) {
+  #dino {
+    width: 150px; /* Menyesuaikan ukuran Dino lebih kecil */
+    height: auto;
+    bottom: 10px; /* Atur agar lebih dekat dengan bawah */
+  }
+
+  #cactus {
+    width: 80px; /* Ukuran cactus lebih kecil */
+    height: auto;
+    right: 50px; /* Menyesuaikan posisi */
+  }
+
+  #obstacle2 {
+    width: 70px; /* Ukuran obstacle2 lebih kecil */
+    height: auto;
+    right: -200px; /* Menyesuaikan posisi agar lebih sesuai */
+  }
+}
+
+/* CSS untuk perangkat layar sangat kecil (misal iPhone) */
+@media (max-width: 480px) {
+  #dino {
+    width: 100px; /* Ukuran lebih kecil lagi */
+    height: auto;
+    bottom: 5px; /* Lebih dekat ke bawah */
+  }
+
+  #cactus {
+    width: 60px; /* Cactus lebih kecil */
+    height: auto;
+    right: 30px;
+  }
+
+  #obstacle2 {
+    width: 50px; /* Ukuran obstacle2 lebih kecil */
+    height: auto;
+    right: -100px;
+  }
+}
+
+/* CSS untuk perangkat layar landscape atau iPad */
+@media (max-width: 1024px) {
+  #dino {
+    width: 200px; /* Dino sedikit lebih kecil dari default */
+    height: auto;
+    bottom: 20px;
+  }
+
+  #cactus {
+    width: 90px; /* Menyesuaikan ukuran cactus */
+    height: auto;
+    right: 100px;
+  }
+
+  #obstacle2 {
+    width: 80px; /* Menyesuaikan ukuran obstacle2 */
+    height: auto;
+    right: -300px;
+  }
+}
+
+@keyframes obstacle2-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes cactus-pulse {
@@ -339,30 +426,6 @@ border-radius: 5px;
 
 #game-over-message {
   text-align: center;
-}
-
-/* Rintangan kedua */
-#obstacle2 {
-  position: absolute;
-  bottom: -1px;
-  right: -400px;
-  width: 100px;
-  height: 110px;
-  background: url('image/Asset\ 11.png') no-repeat center center;
-  background-size: cover;
-  animation: obstacle2-pulse 2s infinite;
-}
-
-@keyframes obstacle2-pulse {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-  100% {
-    transform: scale(1);
-  }
 }
 
 #jump {
