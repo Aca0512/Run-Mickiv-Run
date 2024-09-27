@@ -645,21 +645,37 @@ background-color: #e1306c;
   }
 }
 
-/* CSS untuk menyesuaikan tampilan di perangkat mobile */
+/* CSS untuk perangkat mobile (maks lebar 600px) */
 @media only screen and (max-width: 600px) {
+  #cactus {
+    width: 50px; /* Ukuran yang lebih kecil untuk cactus */
+    height: auto;
+    right: 10px; /* Sesuaikan posisi cactus */
+    bottom: 0; /* Pastikan cactus berada di bagian bawah layar */
+    visibility: visible; /* Pastikan cactus terlihat */
+    display: block; /* Tampilkan cactus */
+  }
+
+  #obstacle2 {
+    width: 50px; /* Ukuran yang lebih kecil untuk obstacle2 */
+    height: auto;
+    right: 100px; /* Sesuaikan posisi obstacle2 */
+    bottom: 0; /* Pastikan obstacle2 berada di bagian bawah layar */
+    visibility: visible; /* Pastikan obstacle2 terlihat */
+    display: block; /* Tampilkan obstacle2 */
+  }
+
   #dino {
-    width: 60px;
+    width: 100px; /* Dino lebih kecil untuk layar mobile */
     height: auto;
+    bottom: 5px; /* Dino lebih dekat ke bawah */
   }
 
-  #cactus, #obstacle2, #obstacle3 {
-    width: 10vw;
-    height: auto;
-    bottom: 5vh;
-    display: block;
-    visibility: visible;
+  /* Pastikan game container mengisi layar ponsel */
+  .game-container {
+    width: 100vw;
+    height: 100vh;
   }
-
   #game-over-overlay, #win-screen {
     font-size: 14px;
     padding: 10px;
