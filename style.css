@@ -609,12 +609,17 @@ background-color: #e1306c;
     font-size: 18px; /* Adjust font size for mobile */
     padding: 10px 20px; /* Adjust padding for mobile */
   }
-  #cactus, #obstacle2, #obstacle3, #dino {
-    width: 20%; /* Adjust the width as needed for mobile */
-    height: auto; /* Maintain aspect ratio */
+  #cactus, #obstacle2, #obstacle3 {
+    width: 10vw;
+    height: auto;
+    bottom: 5vh;
+    display: block;
+    visibility: visible;
   }
   #dino {
      bottom: 50px;
+     width: 60px;
+    height: auto;
   }
   .obstacle {
       width: 100px;
@@ -648,8 +653,11 @@ background-color: #e1306c;
   }
 
   #cactus, #obstacle2, #obstacle3 {
-    width: 80px;
-    height: 100px;
+    width: 10vw;
+    height: auto;
+    bottom: 5vh;
+    display: block;
+    visibility: visible;
   }
 
   #game-over-overlay, #win-screen {
@@ -670,4 +678,9 @@ background-color: #e1306c;
     transform: rotate(90deg); /* Rotasi tampilan saat mode landscape */
     transform-origin: center;
   }
+}
+
+#gameCanvas {
+  width: 100vw; /* Mengisi layar penuh pada perangkat seluler */
+  height: 100vh;
 }
