@@ -196,7 +196,9 @@ let gameInterval;
 let jumpCount = 2; // Allowed number of jumps in quick succession
 let jumpCooldown = false; // Flag to prevent immediate jumps after landing
 let currentImageIndex = 0;
-
+let screenWidth = window.innerWidth;
+let cactusWidth = screenWidth * 0.1; // 10% dari lebar layar
+cactus.style.width = `${cactusWidth}px`;
 
 function startRunAnimation() {
     runAnimationInterval = setInterval(() => {
@@ -486,3 +488,7 @@ function checkOrientation() {
 
 window.addEventListener('resize', checkOrientation);
 document.addEventListener('DOMContentLoaded', checkOrientation);
+
+const canvas = document.getElementById('gameCanvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
