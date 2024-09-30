@@ -603,7 +603,7 @@ background-color: #e1306c;
 /* CSS untuk perangkat mobile (maks lebar 600px) */
 @media only screen and (max-width: 600px) {
   #cactus {
-    width: 50px; /* Ukuran yang lebih kecil untuk cactus */
+    width: 80px; /* Ukuran yang lebih kecil untuk cactus */
     height: auto;
     right: 10px; /* Sesuaikan posisi cactus */
     bottom: -10; /* Pastikan cactus berada di bagian bawah layar */
