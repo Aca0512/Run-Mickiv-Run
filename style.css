@@ -604,7 +604,7 @@ background-color: #e1306c;
 @media only screen and (max-width: 600px) {
   #cactus {
     width: 50px; /* Ukuran yang lebih kecil untuk cactus */
-    height: 50px;
+    height: auto;
     right: 10px; /* Sesuaikan posisi cactus */
     bottom: -10; /* Pastikan cactus berada di bagian bawah layar */
     visibility: visible; /* Pastikan cactus terlihat */
