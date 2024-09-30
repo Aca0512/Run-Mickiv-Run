@@ -602,6 +602,14 @@ background-color: #e1306c;
 
 /* CSS untuk perangkat mobile (maks lebar 600px) */
 @media only screen and (max-width: 600px) {
+  #game-title {
+  width: 500px; /* Ukuran gambar */
+  height: auto; /* Menjaga proporsi gambar */
+  display: block;
+  position: relative; /* Agar dapat mengatur posisi */
+  margin: 0 auto; /* Pusatkan gambar di akhir animasi */
+  animation: slide-in 2s ease-out forwards; /* Tambahkan animasi */
+}
   #cactus {
     width: 80px; /* Ukuran yang lebih kecil untuk cactus */
     height: auto;
