@@ -606,7 +606,7 @@ background-color: #e1306c;
     width: 80px; /* Ukuran yang lebih kecil untuk cactus */
     height: auto;
     right: 10px; /* Sesuaikan posisi cactus */
-    bottom: -10; /* Pastikan cactus berada di bagian bawah layar */
+    bottom: -1; /* Pastikan cactus berada di bagian bawah layar */
     visibility: visible; /* Pastikan cactus terlihat */
     display: block; /* Tampilkan cactus */
   }
@@ -615,7 +615,7 @@ background-color: #e1306c;
     width: 50px; /* Ukuran yang lebih kecil untuk obstacle2 */
     height: auto;
     right: 100px; /* Sesuaikan posisi obstacle2 */
-    bottom: -10; /* Pastikan obstacle2 berada di bagian bawah layar */
+    bottom: -1; /* Pastikan obstacle2 berada di bagian bawah layar */
     visibility: visible; /* Pastikan obstacle2 terlihat */
     display: block; /* Tampilkan obstacle2 */
   }
