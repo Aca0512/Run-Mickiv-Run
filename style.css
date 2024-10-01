@@ -614,7 +614,7 @@ background-color: #e1306c;
     width: 30px; /* Ukuran yang lebih kecil untuk cactus */
     height: auto;
     right: 10px; /* Sesuaikan posisi cactus */
-    bottom: -1; /* Pastikan cactus berada di bagian bawah layar */
+    bottom: -1 ; /* Pastikan cactus berada di bagian bawah layar */
     visibility: visible; /* Pastikan cactus terlihat */
     display: block; /* Tampilkan cactus */
   }
@@ -622,14 +622,14 @@ background-color: #e1306c;
   #obstacle2 {
     width: 50px; /* Ukuran yang lebih kecil untuk obstacle2 */
     height: auto;
-    right: 200px; /* Sesuaikan posisi obstacle2 */
+    right: 350px; /* Sesuaikan posisi obstacle2 */
     bottom: -1; /* Pastikan obstacle2 berada di bagian bawah layar */
     visibility: visible; /* Pastikan obstacle2 terlihat */
     display: block; /* Tampilkan obstacle2 */
   }
 
   #dino {
-    width: 80px; /* Dino lebih kecil untuk layar mobile */
+    width: 50px; /* Dino lebih kecil untuk layar mobile */
     height: auto;
     bottom: 5px; /* Dino lebih dekat ke bawah */
   }
