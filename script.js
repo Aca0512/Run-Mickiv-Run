@@ -69,34 +69,47 @@ function startGame() {
 function gameOver() {
   if (screen.orientation && screen.orientation.unlock) {
     screen.orientation.unlock();  // Unlock orientation
-    }
-    // Stop the game animation
-    clearInterval(gameInterval);
-    clearInterval(moveObstacle3Interval);
+  }
 
-    // Show the game over overlay
-    gameOverOverlay.style.display = 'flex';
+  // Stop the game animation
+  clearInterval(gameInterval);
+  clearInterval(moveObstacle3Interval);
 
-    // Display final score
-    finalScore.textContent = `Your score: ${score}`;
+  // Pause all sounds
+  stepSound.pause();
+  backgroundSound.pause();
+  jumpSound.pause();
+  
+  // Reset the playback position for sounds
+  stepSound.currentTime = 0;
+  backgroundSound.currentTime = 0;
+  jumpSound.currentTime = 0;
 
-    // Show obstacle3 in the overlay
-    obstacle3.style.display = 'block';
-    obstacle3.style.position = 'absolute'; 
-    obstacle3.style.right = '50%'; // Center it horizontally in the overlay
-    obstacle3.style.bottom = '20px'; // Adjust as needed for vertical positioning
+  // Show the game over overlay
+  gameOverOverlay.style.display = 'flex';
 
-    // Hide game elements
-    dino.style.display = 'none';
-    cactus.style.display = 'none';
-    obstacle2.style.display = 'none';
+  // Display final score
+  finalScore.textContent = `Your score: ${score}`;
 
-    // Reset variables if necessary
-    isGameOver = true;
-    score = 0;
+  // Show obstacle3 in the overlay
+  obstacle3.style.display = 'block';
+  obstacle3.style.position = 'absolute'; 
+  obstacle3.style.right = '50%'; // Center it horizontally in the overlay
+  obstacle3.style.bottom = '20px'; // Adjust as needed for vertical positioning
 
-    backgroundSound.play(); // Start the background sound again on game over
+  // Hide game elements
+  dino.style.display = 'none';
+  cactus.style.display = 'none';
+  obstacle2.style.display = 'none';
+
+  // Reset variables if necessary
+  isGameOver = true;
+  score = 0;
+
+  // Optionally, restart background sound for game over screen or menu
+  backgroundSound.play(); // Play background sound again after game over
 }
+
 
 function updateGame() {
   if (!gameStarted || isGameOver) return;
@@ -430,12 +443,13 @@ function jump() {
       // Reset jump cooldown after a short delay
       setTimeout(() => {
         jumpCooldown = false;
-      }, 150); // Adjust cooldown duration as needed
+      }, 550); // Adjust cooldown duration as needed
 
       dino.src = runImages[currentRunImageIndex]; // Return to running image
     }, 470); // Adjust jump duration as needed
   }
 }
+
 // Event listener untuk PC (spasi)
 if (!isMobile()) {
   document.addEventListener('keydown', (event) => {
