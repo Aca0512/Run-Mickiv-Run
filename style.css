@@ -52,7 +52,7 @@
   position: absolute;
   bottom: -20px;
   right: 130px; /* Start off-screen */
-  width: 110px;
+  width: 100px;
   height: 70px;
   background-image: url('image/Asset 14 .png');
   background-size: cover;
