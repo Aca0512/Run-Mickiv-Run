@@ -630,7 +630,7 @@ background-color: #e1306c;
 
   #dino {
     width: 50px; /* Dino lebih kecil untuk layar mobile */
-    height: auto;
+    height: 50px;
     bottom: 5px; /* Dino lebih dekat ke bawah */
   }
 
