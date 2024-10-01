@@ -611,9 +611,9 @@ background-color: #e1306c;
     animation: slide-in 2s ease-out forwards; /* Tambahkan animasi */
   }
   #cactus {
-    width: 70px; /* Ukuran yang lebih kecil untuk cactus */
-    height: 70px;
-    right: 10px; /* Sesuaikan posisi cactus */
+    width: 100px; /* Ukuran yang lebih kecil untuk cactus */
+    height: 100px;
+    right: 50px; /* Sesuaikan posisi cactus */
     bottom: -1 ; /* Pastikan cactus berada di bagian bawah layar */
     visibility: visible; /* Pastikan cactus terlihat */
     display: block; /* Tampilkan cactus */
