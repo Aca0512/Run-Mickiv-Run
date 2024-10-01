@@ -566,7 +566,7 @@ background-color: #e1306c;
   }
   #cactus, #obstacle2, #obstacle3 {
     width: 10px;
-    height: 10px;
+    height: auto;
     bottom: 5vh;
     display: block;
     visibility: visible;
