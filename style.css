@@ -52,7 +52,7 @@
   position: absolute;
   bottom: -20px;
   right: 130px; /* Start off-screen */
-  width: 100px;
+  width: 110px;
   height: 70px;
   background-image: url('image/Asset 14 .png');
   background-size: cover;
@@ -603,15 +603,15 @@ background-color: #e1306c;
 /* CSS untuk perangkat mobile (maks lebar 600px) */
 @media only screen and (max-width: 600px) {
   #game-title {
-  width: 500px; /* Ukuran gambar */
-  height: auto; /* Menjaga proporsi gambar */
-  display: block;
-  position: relative; /* Agar dapat mengatur posisi */
-  margin: 0 auto; /* Pusatkan gambar di akhir animasi */
-  animation: slide-in 2s ease-out forwards; /* Tambahkan animasi */
-}
+    width: 300px; /* Ukuran gambar */
+    height: auto; /* Menjaga proporsi gambar */
+    display: block;
+    position: relative; /* Agar dapat mengatur posisi */
+    margin: 0 auto; /* Pusatkan gambar di akhir animasi */
+    animation: slide-in 2s ease-out forwards; /* Tambahkan animasi */
+  }
   #cactus {
-    width: 100px; /* Ukuran yang lebih kecil untuk cactus */
+    width: 50px; /* Ukuran yang lebih kecil untuk cactus */
     height: auto;
     right: 10px; /* Sesuaikan posisi cactus */
     bottom: -1; /* Pastikan cactus berada di bagian bawah layar */
@@ -622,14 +622,14 @@ background-color: #e1306c;
   #obstacle2 {
     width: 50px; /* Ukuran yang lebih kecil untuk obstacle2 */
     height: auto;
-    right: 100px; /* Sesuaikan posisi obstacle2 */
+    right: 150px; /* Sesuaikan posisi obstacle2 */
     bottom: -1; /* Pastikan obstacle2 berada di bagian bawah layar */
     visibility: visible; /* Pastikan obstacle2 terlihat */
     display: block; /* Tampilkan obstacle2 */
   }
 
   #dino {
-    width: 100px; /* Dino lebih kecil untuk layar mobile */
+    width: 80px; /* Dino lebih kecil untuk layar mobile */
     height: auto;
     bottom: 5px; /* Dino lebih dekat ke bawah */
   }
