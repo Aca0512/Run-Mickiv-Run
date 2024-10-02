@@ -50,9 +50,9 @@
 
 #cactus {
   position: absolute;
-  bottom: -20px;
+  bottom: -1px;
   right: 130px; /* Start off-screen */
-  width: 110px;
+  width: 70px;
   height: 70px;
   background-image: url('image/Asset 14 .png');
   background-size: cover;
