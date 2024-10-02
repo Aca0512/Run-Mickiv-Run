@@ -239,7 +239,7 @@ function resetGame() {
 function detectCollision(element) {
     const dinoRect = dino.getBoundingClientRect();
     const elementRect = element.getBoundingClientRect();
-    const padding = -80; // Adjust the padding as needed to refine collision detection
+    const padding = -79; // Adjust the padding as needed to refine collision detection
     return !(
         dinoRect.right < elementRect.left - padding ||
         dinoRect.left > elementRect.right + padding ||
