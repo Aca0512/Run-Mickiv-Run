@@ -138,12 +138,12 @@
   font-family: 'Poppins', sans-serif;
   background-image: url('image/Asset 18.jpg');
   background-size: cover;
-  padding: 80px 120px;
+  padding: 80px 200px;
   height: 20;
   border-radius: 10px;
   border: 4px solid #404150; /* Menambahkan garis kotak dengan warna putih */
-  text-shadow: 2px 2px 0 #554848;
-  color: #e42199; /* Warna teks di dalam kotak */
+  text-shadow: 3px 3px 0 #e42199;
+  color: #6bd7f1; /* Warna teks di dalam kotak */
   text-align: center; /* Menyelaraskan teks di tengah */
   animation: shake 0.5s;
 }
@@ -157,7 +157,7 @@
 }
 
 #game-over-message p {
-  text-shadow: 1px 1px 0 #554848;
+  text-shadow: 2px 2px 0 #6bd7f1;
   font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
