@@ -1,3 +1,6 @@
+/* Import Google Fonts Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 #game-container {
   position: relative;
   width: 100%;
@@ -50,10 +53,10 @@
 
 #cactus {
   position: absolute;
-  bottom: -1px;
+  bottom: 1px;
   right: 130px; /* Start off-screen */
-  width: 70px;
-  height: 70px;
+  width: 10px;
+  height: 50px;
   background-image: url('image/Asset 14 .png');
   background-size: cover;
   animation: cactus-pulse 2s infinite;
@@ -100,7 +103,7 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: calc(2rem + 1vw);
-  font-family: 'url(font/ARIAL purchased)', cursive;
+  font-family: 'Poppins', sans-serif;
   color: #ffffff; /* White text for visibility */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   background-image: linear-gradient(to right, #4682B4, #B0C4DE); /* Ocean blue gradient */
@@ -131,6 +134,7 @@
 }
 
 #game-over-message {
+  font-family: 'Poppins', sans-serif;
   background-image: url('image/Asset 18.jpg');
   background-size: cover;
   padding: 80px 120px;
@@ -157,7 +161,7 @@
   padding: 20px 30px;
   border-radius: 10%; /* Rounded corners */
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  font-family: 'url(font/ARIAL purchased)';
+  font-family: 'Poppins', sans-serif;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
@@ -267,7 +271,7 @@
 }
 
 #start-overlay h1 {
-font-family: 'Super Bubbly', cursive;
+font-family: 'Poppins', sans-serif;
 letter-spacing: 0.-2em;
 color: #FF8C9E; /* Main text color */
 font-size: 5rem; /* Increased font size */
@@ -295,10 +299,11 @@ from { border-right-color: #FF8C9E; }
 to { border-right-color: transparent; }
 }
 
-body{
-text-align:center;
-background-color:#0a0a0a;
-font-size: 16px;
+body {
+  text-align: center;
+  background-color: #0a0a0a;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif; /* Terapkan font Poppins ke seluruh halaman */
 }
 
 @media (max-width: 768) {
@@ -316,7 +321,7 @@ margin:20px;
 /* TOMBOL PLAY */
 .button a {
 color: white;
-font-family: (font/ARIAL purchased);
+font-family: 'Poppins', sans-serif;
 font-weight: bold;
 font-size: 36px;
 text-align: center;
@@ -392,7 +397,7 @@ border-radius: 5px;
 
 #welcome-text {
   font-size: 4rem;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Poppins', sans-serif;
   color: #fff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
@@ -613,7 +618,7 @@ background-color: #e1306c;
   #cactus {
     width: 100px; /* Ukuran yang lebih kecil untuk cactus */
     height: 100px;
-    right: 50px; /* Sesuaikan posisi cactus */
+    right: 10px; /* Sesuaikan posisi cactus */
     bottom: -1 ; /* Pastikan cactus berada di bagian bawah layar */
     visibility: visible; /* Pastikan cactus terlihat */
     display: block; /* Tampilkan cactus */
