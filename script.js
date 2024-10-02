@@ -462,6 +462,7 @@ if (!isMobile()) {
 // Event listener untuk mobile (ketuk layar)
 if (isMobile()) {
   document.addEventListener('touchstart', () => {
+    event.preventDefault();
     jump();
   });
 }
