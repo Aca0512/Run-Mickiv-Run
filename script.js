@@ -507,3 +507,15 @@ document.addEventListener('DOMContentLoaded', checkOrientation);
 const canvas = document.getElementById('gameCanvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+
+// Control bird jump on keydown (for desktop)
+document.addEventListener('keydown', () => {
+  if (isGameOver) return;
+  birdTop -= jumpHeight;
+});
+
+// Control bird jump on touchstart (for mobile and tablet)
+document.addEventListener('touchstart', () => {
+  if (isGameOver) return;
+  birdTop -= jumpHeight;
+});
