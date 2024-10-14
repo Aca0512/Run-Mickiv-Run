@@ -635,7 +635,7 @@ padding: 20vw 12vw; /* Tambah padding lagi */
     left: 40%; /* Mengubah posisi kaktus lebih ke kiri untuk ponsel */
   }
 .obstacle2 {
-    left: 80%; /* Mengubah posisi obstacle2 lebih ke kanan untuk ponsel */
+    left: 100%; /* Mengubah posisi obstacle2 lebih ke kanan untuk ponsel */
   }
 }
 
