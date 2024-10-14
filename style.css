@@ -578,6 +578,12 @@ background-color: #e1306c;
 
 /* Media Query untuk responsivitas pada perangkat mobile */
 @media (max-width: 768px) {
+  .cactus {
+    left: 40%; /* Mengubah posisi kaktus lebih ke kiri untuk ponsel */
+  }
+.obstacle2 {
+    left: 80%; /* Mengubah posisi obstacle2 lebih ke kanan untuk ponsel */
+  }
   #game-over-message {
     font-size: 7vw; /* Lebih besar untuk layar kecil */
     padding: 15vw 10vw; /* Menambah padding untuk layar kecil */
