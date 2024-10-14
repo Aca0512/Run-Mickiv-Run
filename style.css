@@ -578,6 +578,10 @@ background-color: #e1306c;
 
 /* Media Query untuk responsivitas pada perangkat mobile */
 @media (max-width: 768px) {
+  #game-over-message {
+    font-size: 7vw; /* Lebih besar untuk layar kecil */
+    padding: 15vw 10vw; /* Menambah padding untuk layar kecil */
+  }
   #score-board {
       font-size: 20px;
       padding: 8px 16px;
@@ -619,6 +623,13 @@ background-color: #e1306c;
   .game-container {
     width: 100vw;
     height: 100vh;
+  }
+}
+
+@media (max-width: 480px) {
+#game-over-message {   
+font-size: 10vw; /* Lebih besar untuk layar sangat kecil */
+padding: 20vw 12vw; /* Tambah padding lagi */
   }
 }
 
