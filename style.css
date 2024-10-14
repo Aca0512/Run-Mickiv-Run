@@ -726,7 +726,7 @@ padding: 20vw 12vw; /* Tambah padding lagi */
     width: 100vw;
     height: 100vh;
   }
-  #game-over-overlay, #win-screen {
+  #game-over-overlay {
     font-size: 14px;
     padding: 10px;
   }
