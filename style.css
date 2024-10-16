@@ -626,24 +626,6 @@ background-color: #e1306c;
   }
 }
 
-@media (max-width: 480px) {
-  #dino, .cactus, .obstacle2 {
-    width: 30px; /* Ukuran lebih kecil untuk ponsel */
-    height: auto;
-  }
-
-  .cactus {
-    position: relative;
-    left: -30px; /* Geser cactus ke kiri */
-  }
-
-  .obstacle2 {
-    position: relative;
-    left: 30px; /* Geser obstacle2 ke kanan */
-  }
-}
-
-
 /* CSS untuk perangkat mobile (maks lebar 600px) */
 @media only screen and (max-width: 600px) {
   
