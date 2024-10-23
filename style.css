@@ -7,11 +7,11 @@
   height: 98vh;
   overflow: hidden;
   background-color: #0c0c0c;
-  background-image: url('image/Asset 18.jpg'); /* Ganti dengan jalur ke gambar latar belakang Anda */
-  background-size: 200% 100%; /* Ukuran gambar latar belakang dua kali lebar kontainer untuk efek geser */
+  background-image: url('image/Asset 22.png'); /* Ganti dengan jalur ke gambar latar belakang Anda */
+  background-size: cover; /* Ukuran gambar latar belakang dua kali lebar kontainer untuk efek geser */
   background-position: 0 0; /* Memulai posisi latar belakang dari kiri */
   background-repeat: repeat-x; /* Mengulangi gambar latar belakang hanya secara horizontal */
-  animation: fadeIn 1s forwards, moveBackground 20s linear infinite;
+  animation: fadeIn 1s forwards, moveBackground 60s linear infinite;
   border-radius: 5px;
 }
 
@@ -57,9 +57,8 @@
   right: 130px; /* Start off-screen */
   width: 100px;
   height: 50px;
-  background-image: url('image/Asset 14 .png');
+  background-image: url('image/Asset 10.png');
   background-size: cover;
-  animation: cactus-pulse 2s infinite;
 }
 
 #obstacle2 {
@@ -70,7 +69,6 @@
   height: 110px;
   background: url('image/Asset\ 11.png') no-repeat center center;
   background-size: cover;
-  animation: obstacle2-pulse 2s infinite;
 }
 
 @keyframes obstacle2-pulse {
@@ -136,8 +134,8 @@
 #game-over-message {
   font-size: 20px;
   font-family: 'Poppins', sans-serif;
-  background-image: url('image/Asset 18.jpg');
-  background-size: cover;
+  background-image: url('image/Asset 22.png');
+  background-size: 20 500;
   padding: 80px 200px;
   height: 20;
   border-radius: 10px;
@@ -145,7 +143,6 @@
   text-shadow: 3px 3px 0 #e42199;
   color: #6bd7f1; /* Warna teks di dalam kotak */
   text-align: center; /* Menyelaraskan teks di tengah */
-  animation: shake 0.5s;
 }
 
 @keyframes shake {
@@ -255,7 +252,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('image/Asset 18.jpg');
+  background-image: url('image/Asset 22.png');
   background-size: cover;
   background-position: left center; /* Memulai posisi background dari kiri */
   color: white;
@@ -265,7 +262,7 @@
   justify-content: center;
   z-index: 1000;
   opacity: 0;
-  animation: fadeIn 1s forwards, moveBackground 20s linear infinite;
+  animation: fadeIn 1s forwards, moveBackground 60s linear infinite;
 }
 
 /* Animasi untuk menggerakkan background dari kiri ke kanan */
@@ -433,7 +430,7 @@ border-radius: 5px;
 
 .social-icon {
 display: inline-block;
-padding: 15px;
+padding: 5px;
 border-radius: 50%;
 /* Menggunakan gradien warna untuk latar belakang */
 background: linear-gradient(to bottom right, #f0f0f0, #e0e0e0);
@@ -648,7 +645,7 @@ background-color: #e1306c;
   #game-over-message {
     font-size: 20px;
     font-family: 'Poppins', sans-serif;
-    background-image: url('image/Asset 18.jpg');
+    background-image: url('image/Asset 22.png');
     background-size: cover;
     padding: 80px 200px;
     height: 20;
