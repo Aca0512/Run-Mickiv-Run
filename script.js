@@ -20,6 +20,33 @@ const winScreen = document.getElementById('win-screen');
 const initialObstacle3Speed = 5; // Store initial speed for reset
 const backgroundSound = document.getElementById('background-sound')
 const mickiv = document.getElementById('mickiv');
+const gameBackground = document.querySelector('.game-background');
+
+function stopBackground() {
+  // Menghentikan animasi dan menyimpan posisi terakhir background
+  const computedStyle = window.getComputedStyle(gameBackground);
+  const backgroundPosition = computedStyle.getPropertyValue('background-position');
+  gameBackground.style.animation = 'none';
+  gameBackground.style.backgroundPosition = backgroundPosition;
+}
+
+function resetBackground() {
+  // Mereset background untuk mulai dari awal
+  gameBackground.style.animation = '';
+}
+
+// Ketika game over
+function gameOver() {
+  stopBackground();
+  // Tambahkan kode lain untuk game over
+}
+
+// Ketika mulai ulang game
+function restartGame() {
+  resetBackground();
+  // Tambahkan kode lain untuk restart game
+}
+
 
 // Function to display and move obstacle3
 function moveObstacle3() {
@@ -42,6 +69,10 @@ function startGame() {
   lockToLandscape();
   backgroundSound.pause();
   backgroundSound.currentTime = 0;
+
+  backgroundAnimationInterval = setInterval(() => {
+    // Kode untuk mengupdate animasi background
+  }, 10);
 
   startOverlay.style.display = 'none';
   dino.style.display = 'block';
@@ -74,6 +105,7 @@ function gameOver() {
   // Stop the game animation
   clearInterval(gameInterval);
   clearInterval(moveObstacle3Interval);
+  clearInterval(backgroundAnimationInterval);
 
   // Pause all sounds
   stepSound.pause();
