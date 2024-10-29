@@ -20,33 +20,6 @@ const winScreen = document.getElementById('win-screen');
 const initialObstacle3Speed = 5; // Store initial speed for reset
 const backgroundSound = document.getElementById('background-sound')
 const mickiv = document.getElementById('mickiv');
-const gameBackground = document.querySelector('.game-background');
-
-function stopBackground() {
-  // Menghentikan animasi dan menyimpan posisi terakhir background
-  const computedStyle = window.getComputedStyle(gameBackground);
-  const backgroundPosition = computedStyle.getPropertyValue('background-position');
-  gameBackground.style.animation = 'none';
-  gameBackground.style.backgroundPosition = backgroundPosition;
-}
-
-function resetBackground() {
-  // Mereset background untuk mulai dari awal
-  gameBackground.style.animation = '';
-}
-
-// Ketika game over
-function gameOver() {
-  stopBackground();
-  // Tambahkan kode lain untuk game over
-}
-
-// Ketika mulai ulang game
-function restartGame() {
-  resetBackground();
-  // Tambahkan kode lain untuk restart game
-}
-
 
 // Function to display and move obstacle3
 function moveObstacle3() {
@@ -69,10 +42,6 @@ function startGame() {
   lockToLandscape();
   backgroundSound.pause();
   backgroundSound.currentTime = 0;
-
-  backgroundAnimationInterval = setInterval(() => {
-    // Kode untuk mengupdate animasi background
-  }, 10);
 
   startOverlay.style.display = 'none';
   dino.style.display = 'block';
@@ -99,19 +68,23 @@ function startGame() {
 
 function gameOver() {
   if (screen.orientation && screen.orientation.unlock) {
-    screen.orientation.unlock();  // Unlock orientation
+      screen.orientation.unlock();  // Unlock orientation
   }
 
-  // Stop the game animation
+  // Stop the game animation by clearing the animation property
+  const gameContainer = document.getElementById('game-container');
+  gameContainer.style.animation = 'none'; // Stop background animation
+
+  // Stop the game intervals
   clearInterval(gameInterval);
   clearInterval(moveObstacle3Interval);
-  clearInterval(backgroundAnimationInterval);
+  clearInterval(backgroundAnimationInterval); // Ensure this is cleared
 
   // Pause all sounds
   stepSound.pause();
   backgroundSound.pause();
   jumpSound.pause();
-  
+
   // Reset the playback position for sounds
   stepSound.currentTime = 0;
   backgroundSound.currentTime = 0;
@@ -141,7 +114,6 @@ function gameOver() {
   // Optionally, restart background sound for game over screen or menu
   backgroundSound.play(); // Play background sound again after game over
 }
-
 
 function updateGame() {
   if (!gameStarted || isGameOver) return;
@@ -186,32 +158,63 @@ function updateGame() {
 }
 
 function restartGame() {
-    clearInterval(gameInterval);
-    clearInterval(moveObstacle3Interval); // Stop obstacle3 movement
-    isGameOver = false; // Reset game over flag
-    score = 0; // Reset score
+  // Menghapus animasi background dengan cara reset class
+  const gameContainer = document.getElementById('game-container');
+  
+  // Hentikan animasi dengan menghapus class dan menambahkannya lagi
+  gameContainer.style.animation = 'none';
+  gameContainer.offsetHeight; // Trik untuk memaksa browser merender ulang elemen
+  gameContainer.style.animation = 'fadeIn 1s forwards, moveBackground 70s linear infinite';
 
-    cactusSpeed = initialCactusSpeed; // Reset cactus speed
-    obstacle2Speed = initialObstacle2Speed; // Reset obstacle2 speed
-    obstacle3Speed = initialObstacle3Speed; // Reset obstacle3 speed
+  // Lanjutkan proses restart lainnya (seperti reset score, posisi dino, dll.)
+  // ...
+}
 
-    scoreElement.innerText = `Score: ${score}`; // Reset score display
+function restartGame() {
+  // Menghentikan interval dan animasi game
+  clearInterval(gameInterval);
+  clearInterval(moveObstacle3Interval);
+  clearInterval(runAnimationInterval);
+  
+  isGameOver = false;
+  score = 0;
 
-    cactus.style.right = '-100px'; // Reset cactus position
-    obstacle2.style.right = '-700px'; // Reset obstacle2 position
-    obstacle3.style.right = '-400px'; // Reset obstacle3 position
-
-    gameOverOverlay.style.display = 'none'; // Hide game over overlay
-    
-    dino.style.left = '100px';
-    dino.style.bottom = '-30px';
-
-    startOverlay.style.display = 'flex'; // Show start overlay
-    gameStarted = false; // Set gameStarted flag to false
-
-    if (grass) grass.style.animation = 'none'; // Stop grass animation
-    clearInterval(runAnimationInterval); // Stop running animation
-    dino.src = runImages[0]; // Reset Dino's image to the initial one
+  // Reset posisi objek
+  cactus.style.right = '-100px';
+  obstacle2.style.right = '-700px';
+  obstacle3.style.right = '-400px';
+  
+  scoreElement.innerText = `Score: ${score}`;
+  
+  // Sembunyikan overlay game over
+  gameOverOverlay.style.display = 'none';
+  
+  // Reset posisi dan tampilan dino
+  dino.style.left = '100px';
+  dino.style.bottom = '-30px';
+  dino.src = runImages[0]; // Reset gambar Dino
+  
+  // Reset animasi background dengan menghapus dan menambahkan kembali kelas animasi
+  const gameContainer = document.getElementById('game-container');
+  
+  gameContainer.style.animation = 'none';  // Hentikan animasi
+  gameContainer.offsetHeight;  // Memaksa browser untuk me-render ulang
+  gameContainer.style.animation = 'moveBackground 70s linear infinite';  // Mulai ulang animasi
+  
+  // Jika ada animasi rumput
+  if (grass) {
+      grass.style.animation = 'none';
+      grass.offsetHeight;  // Memaksa render ulang
+      grass.style.animation = 'grass-animation 5s infinite linear';  // Mulai ulang animasi rumput
+  }
+  
+  // Tampilkan layar awal
+  startOverlay.style.display = 'flex';
+  gameStarted = false;  // Set game belum dimulai
+  
+  // Hentikan suara langkah dan reset state
+  stepSound.pause();
+  stepSound.currentTime = 0;
 }
 
 // Event listener for start button
