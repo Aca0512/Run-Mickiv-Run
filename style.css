@@ -262,7 +262,7 @@
   justify-content: center;
   z-index: 1000;
   opacity: 0;
-  animation: fadeIn 1s forwards, moveBackground 60s linear infinite;
+  animation: fadeIn 1s forwards, moveBackground 10s linear infinite;
 }
 
 /* Animasi untuk menggerakkan background dari kiri ke kanan */
