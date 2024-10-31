@@ -567,62 +567,6 @@ background-color: #e1306c;
   z-index: 1000;
 }
 
-/* Media Query untuk responsivitas pada perangkat mobile */
-@media (max-width: 768px) {
-  .cactus {
-    left: 40%; /* Mengubah posisi kaktus lebih ke kiri untuk ponsel */
-  }
-.obstacle2 {
-    left: 80%; /* Mengubah posisi obstacle2 lebih ke kanan untuk ponsel */
-  }
-  #game-over-message {
-    font-size: 7vw; /* Lebih besar untuk layar kecil */
-    padding: 15vw 10vw; /* Menambah padding untuk layar kecil */
-  }
-  #score-board {
-      font-size: 20px;
-      padding: 8px 16px;
-  }
-  #restart-button {
-    font-size: 18px; /* Adjust font size for mobile */
-    padding: 10px 20px; /* Adjust padding for mobile */
-  }
-  #cactus, #obstacle2, #obstacle3 {
-    width: 10px;
-    height: auto;
-    bottom: 5vh;
-    display: block;
-    visibility: visible;
-  }
-  #dino {
-     bottom: 50px;
-     width: 60px;
-    height: auto;
-  }
-  .obstacle {
-      width: 100px;
-      height: 80px;
-  }
-  canvas {
-    width: 100vw; /* Sesuaikan lebar canvas ke 100% lebar viewport */
-    height: auto; /* Sesuaikan tinggi secara proporsional */
-  }
-  /* Atur ukuran tombol, teks, dan elemen lainnya */
-  .button {
-    width: 80%;
-    padding: 15px;
-    font-size: 1.2rem; /* Perbesar ukuran font */
-  }  
-  body {
-    font-size: 16px;
-    transform: rotate(0deg);
-  }
-  .game-container {
-    width: 100vw;
-    height: 100vh;
-  }
-}
-
 /* CSS untuk perangkat mobile (maks lebar 600px) */
 @media only screen and (max-width: 600px) {
   
@@ -679,6 +623,7 @@ background-color: #e1306c;
   #game-over-message h1 {
     margin-bottom: 20px; /* Adjust the margin-bottom value as needed */
   }
+
   #game-title {
     width: 100px; /* Ukuran gambar */
     height: auto; /* Menjaga proporsi gambar */
@@ -687,6 +632,7 @@ background-color: #e1306c;
     margin: 0 auto; /* Pusatkan gambar di akhir animasi */
     animation: slide-in 2s ease-out forwards; /* Tambahkan animasi */
   }
+
   #cactus {
     width: 100px; /* Ukuran yang lebih kecil untuk cactus */
     height: 100px;
