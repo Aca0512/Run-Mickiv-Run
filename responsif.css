@@ -1,0 +1,102 @@
+/* Dasar Styling untuk Mobile */
+body, #game-container {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Responsif untuk layar lebih kecil dari 768px (Tablet dan Ponsel) */
+@media (max-width: 768px) {
+    /* Atur ukuran dan posisi elemen game */
+    #game-container {
+        width: 100%;
+        height: 100vh;
+    }
+
+    #dino, #cactus, #obstacle2 {
+        width: 70px; /* Sesuaikan ukuran untuk layar kecil */
+        height: 70px;
+    }
+
+    #score {
+        font-size: 1.5rem; /* Ukuran font lebih kecil */
+        top: 10px; /* Posisikan skor sedikit lebih tinggi */
+    }
+
+    /* Game Over Overlay */
+    #game-over-overlay {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #game-over-message h1 {
+        font-size: 2rem;
+    }
+
+    #game-over-message p {
+        font-size: 1.5rem;
+    }
+
+    #restart-button {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+}
+
+/* Responsif untuk layar lebih kecil dari 480px (Ponsel) */
+@media (max-width: 480px) {
+    #dino, #cactus, #obstacle2 {
+        width: 50px;
+        height: 50px;
+    }
+
+    #score {
+        font-size: 1.2rem;
+    }
+
+    #game-over-message h1 {
+        font-size: 1.8rem;
+    }
+
+    #restart-button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+}
+
+/* Tombol Start di Halaman Awal */
+#start-button a {
+    font-size: 1.5rem;
+    padding: 10px 20px;
+}
+
+@media (max-width: 480px) {
+    #start-button a {
+        font-size: 1.2rem;
+        padding: 8px 16px;
+    }
+}
+
+.social-icon {
+    font-size: 2rem; /* Ukuran ikon di layar besar */
+}
+
+/* Ikon di layar kecil */
+@media (max-width: 768px) {
+    .social-icon {
+        font-size: 1.5rem;
+    }
+}
+
+/* Gambar Mickiv */
+#mickiv {
+    width: 80px; /* Ukuran lebih kecil di layar kecil */
+}
+
+@media (max-width: 480px) {
+    #mickiv {
+        width: 60px;
+    }
+}
