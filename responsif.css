@@ -13,9 +13,14 @@ body, #game-container {
         height: 100vh;
     }
 
-    #dino, #cactus, #obstacle2 {
+    #dino, #obstacle2 {
         width: 70px; /* Sesuaikan ukuran untuk layar kecil */
         height: 70px;
+    }
+
+    #cactus{
+        width: 100px;
+        height: 100px;
     }
 
     #score {
@@ -47,9 +52,14 @@ body, #game-container {
 
 /* Responsif untuk layar lebih kecil dari 480px (Ponsel) */
 @media (max-width: 480px) {
-    #dino, #cactus, #obstacle2 {
+    #dino, #obstacle2 {
         width: 50px;
         height: 50px;
+    }
+
+    #cactus {
+        width: 70px;
+        height: 70px;
     }
 
     #score {
@@ -67,15 +77,11 @@ body, #game-container {
 }
 
 /* Tombol Start di Halaman Awal */
-#start-button a {
-    font-size: 1.5rem;
-    padding: 10px 20px;
-}
 
 @media (max-width: 480px) {
     #start-button a {
         font-size: 1.2rem;
-        padding: 8px 16px;
+        padding: 10px 20px;
     }
 }
 
@@ -100,23 +106,3 @@ body, #game-container {
         width: 60px;
     }
 }
-
-/* Atur tampilan game over untuk layar kecil (ponsel dan iPad) */
-@media only screen and (max-width: 768px) {
-    #game-over-overlay {
-      padding: 20px; /* Tambahkan padding agar tidak terlalu dekat dengan tepi layar */
-    }
-  
-    #game-over-message {
-      font-size: 16px; /* Sesuaikan ukuran font untuk layar kecil */
-      padding: 40px 20px; /* Kurangi padding untuk layar kecil */
-      border-radius: 8px; /* Sesuaikan border-radius agar tampak proporsional */
-    }
-  
-    #restart-button {
-      font-size: 16px; /* Sesuaikan ukuran font tombol */
-      padding: 15px 20px; /* Kurangi padding tombol untuk layar kecil */
-      width: auto; /* Pastikan lebar tombol sesuai dengan teks di dalamnya */
-    }
-  }
-  
