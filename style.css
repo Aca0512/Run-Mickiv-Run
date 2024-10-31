@@ -686,3 +686,25 @@ background-color: #e1306c;
   width: 100vw; /* Mengisi layar penuh pada perangkat seluler */
   height: 100vh;
 }
+
+:root {
+  --vh: 100vh; /* Nilai awal */
+}
+
+#game-container {
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  overflow: hidden; /* Agar tidak ada scrolling */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+#game-container {
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+}
