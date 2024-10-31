@@ -20,6 +20,17 @@ const winScreen = document.getElementById('win-screen');
 const initialObstacle3Speed = 5; // Store initial speed for reset
 const backgroundSound = document.getElementById('background-sound')
 const mickiv = document.getElementById('mickiv');
+const backgroundAudio = document.getElementById('background-audio');
+
+function setViewportHeight() {
+  // Hitung tinggi viewport dalam pixel
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Set `--vh` pada awal dan saat ukuran layar berubah
+setViewportHeight();
+window.addEventListener('resize', setViewportHeight);
 
 // Function to display and move obstacle3
 function moveObstacle3() {
@@ -215,6 +226,9 @@ function restartGame() {
   // Hentikan suara langkah dan reset state
   stepSound.pause();
   stepSound.currentTime = 0;
+
+  backgroundAudio.currentTime = 0; // Set waktu ke 0
+  backgroundAudio.play(); // Mainkan audio
 }
 
 // Event listener for start button
