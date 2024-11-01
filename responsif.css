@@ -76,6 +76,13 @@ body, #game-container {
         top: 10px;
     }
 
+    #game-over-overlay {
+        width: 70%;
+        height: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
     #game-over-message h1 {
         font-size: 1.8rem;
     }
