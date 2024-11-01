@@ -73,6 +73,7 @@ body, #game-container {
 
     #score {
         font-size: 1.2rem;
+        top: 10px;
     }
 
     #game-over-message h1 {
