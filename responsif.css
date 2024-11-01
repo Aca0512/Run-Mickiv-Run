@@ -111,3 +111,10 @@ body, #game-container {
         width: 60px;
     }
 }
+
+/* Media query untuk layar ponsel */
+@media (max-width: 600px) {
+    #game-title {
+      width: 80%; /* Atur lebar ke 80% dari lebar layar ponsel */
+    }
+  }
