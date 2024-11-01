@@ -51,10 +51,9 @@ body, #game-container {
         padding: 10px 20px;
     }
 
-    #start-button a {
-        width: 120px;
-        height: 40px;
-        font-size: 14px;
+    .button a {
+        font-size: 24px;
+        padding: 10px 40px;
     }
 
     .social-icon {
