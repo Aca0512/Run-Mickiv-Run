@@ -48,6 +48,10 @@ body, #game-container {
         font-size: 1.2rem;
         padding: 10px 20px;
     }
+
+    .social-icon {
+        font-size: 1rem;
+    }
 }
 
 /* Responsif untuk layar lebih kecil dari 480px (Ponsel) */
@@ -79,42 +83,23 @@ body, #game-container {
         font-size: 1rem;
         padding: 8px 16px;
     }
-}
 
-/* Tombol Start di Halaman Awal */
-
-@media (max-width: 480px) {
     #start-button a {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         padding: 10px 20px;
     }
-}
 
-.social-icon {
-    font-size: 2rem; /* Ukuran ikon di layar besar */
-}
-
-/* Ikon di layar kecil */
-@media (max-width: 768px) {
-    .social-icon {
-        font-size: 1rem;
-    }
-}
-
-/* Gambar Mickiv */
-#mickiv {
-    width: 80px; /* Ukuran lebih kecil di layar kecil */
-}
-
-@media (max-width: 480px) {
     #mickiv {
         width: 60px;
     }
+
+    #game-title {
+        width: 50%;
+      }
+
+    #social-icon {
+        font-size: 2rem; /* Ukuran ikon di layar besar */
+    }  
 }
 
-/* Media query untuk layar ponsel */
-@media (max-width: 480px) {
-    #game-title {
-      width: 50%;
-    }
-  }
+
