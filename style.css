@@ -160,11 +160,12 @@
   flex-direction: column;
   align-items: center;
   color: #e42199;
-  font-size: 15px;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 #game-over-message h1 {
+  font-size: 2rem;
   margin-bottom: 20px; /* Adjust the margin-bottom value as needed */
 }
 
@@ -457,6 +458,7 @@ color: #e1306c;
 color: #fff;
 background: linear-gradient(to bottom right, #e1306c, #c2245a);
 }
+
 .social-handles {
 position: fixed;
 bottom: 10px;
@@ -565,121 +567,6 @@ background-color: #e1306c;
   justify-content: center;
   align-items: center;
   z-index: 1000;
-}
-
-/* CSS untuk perangkat mobile (maks lebar 600px) */
-@media only screen and (max-width: 600px) {
-  
-  #game-over-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-family: 'url(font/ARIAL purchased)', cursive;
-    background: rgba(230, 5, 5, 0.8);
-    display: none; /* Sembunyikan overlay secara default */
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
-    z-index: 1000; /* Pastikan overlay berada di atas semua elemen lain */
-  }
-  
-  #game-over-message {
-    font-size: 20px;
-    font-family: 'Poppins', sans-serif;
-    background-image: url('image/Asset 25.png');
-    background-size: cover;
-    padding: 80px 200px;
-    height: 20;
-    border-radius: 10px;
-    border: 4px solid #404150; /* Menambahkan garis kotak dengan warna putih */
-    text-shadow: 3px 3px 0 #e42199;
-    color: #6bd7f1; /* Warna teks di dalam kotak */
-    text-align: center; /* Menyelaraskan teks di tengah */
-    animation: shake 0.5s;
-  }
-  
-  @keyframes shake {
-    0% { transform: translateX(0);}
-    25% { transform: translateX(-10px);}
-    50% { transform: translateX(10px);}
-    75% { transform: translateX(-5px);}
-    100% { transform: translateX(0);}
-  }
-  
-  #game-over-message p {
-    text-shadow: 2px 2px 0 #6bd7f1;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: #e42199;
-    font-size: 15px;
-    font-weight: bold;
-  }
-  
-  #game-over-message h1 {
-    margin-bottom: 20px; /* Adjust the margin-bottom value as needed */
-  }
-
-  #game-title {
-    width: 100px; /* Ukuran gambar */
-    height: auto; /* Menjaga proporsi gambar */
-    display: block;
-    position: relative; /* Agar dapat mengatur posisi */
-    margin: 0 auto; /* Pusatkan gambar di akhir animasi */
-    animation: slide-in 2s ease-out forwards; /* Tambahkan animasi */
-  }
-
-  #cactus {
-    width: 100px; /* Ukuran yang lebih kecil untuk cactus */
-    height: 100px;
-    right: 10px; /* Sesuaikan posisi cactus */
-    bottom: -1 ; /* Pastikan cactus berada di bagian bawah layar */
-    visibility: visible; /* Pastikan cactus terlihat */
-    display: block; /* Tampilkan cactus */
-  }
-
-  #obstacle2 {
-    width: 50px; /* Ukuran yang lebih kecil untuk obstacle2 */
-    height: 50px;
-    right: 350px; /* Sesuaikan posisi obstacle2 */
-    bottom: -1; /* Pastikan obstacle2 berada di bagian bawah layar */
-    visibility: visible; /* Pastikan obstacle2 terlihat */
-    display: block; /* Tampilkan obstacle2 */
-  }
-
-  #dino {
-    width: 50px; /* Dino lebih kecil untuk layar mobile */
-    height: 50px;
-    bottom: 5px; /* Dino lebih dekat ke bawah */
-  }
-
-  /* Pastikan game container mengisi layar ponsel */
-  .game-container {
-    width: 100vw;
-    height: 100vh;
-  }
-  #game-over-overlay {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  #grass {
-    height: 40px;
-  }
-
-  #start-overlay, #game-over-overlay, #win-screen {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  body {
-    transform: rotate(90deg); /* Rotasi tampilan saat mode landscape */
-    transform-origin: center;
-  }
 }
 
 #gameCanvas {
