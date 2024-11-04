@@ -2,7 +2,7 @@
 body, #game-container {
     margin: 0;
     padding: 0;
-    overflow-x: visible;
+    overflow-x: hidden;
 }
 
 /* Responsif untuk layar lebih kecil dari 768px (Tablet dan Ponsel) */
