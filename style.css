@@ -500,36 +500,6 @@ color: #fff;
 background-color: #e1306c;
 }
 
-#mickiv {
-  position: absolute;
-  bottom: 550px;
-  right: 400px;
-  width: 60px;
-  height: auto;
-  background-image: url('image/atas.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  animation: moveAndScale 8s linear infinite;
-}
-
-@keyframes moveAndScale {
-  0% {
-    transform: translateX(500px) scale(0); /* Start to the right */
-  }
-  25% {
-    transform: translateX(0) scale(1); /* Move to the center */
-  }
-  50% {
-    transform: translateX(-800px) scale(1); /* Move to the left */
-  }
-  75% {
-    transform: translateX(-800px) scale(0.5); /* Shrink */
-  }
-  100% {
-    transform: translateX(-1000px) scale(0); /* Stay hidden */
-  }
-}
-
 #speed-notification {
   display: none;
   opacity: 0;
