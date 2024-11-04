@@ -2,7 +2,7 @@
 body, #game-container {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: visible;
 }
 
 /* Responsif untuk layar lebih kecil dari 768px (Tablet dan Ponsel) */
@@ -18,12 +18,12 @@ body, #game-container {
         height: 40px;
     }
 
-    #dino{
+    #dino {
         width: 60px;
         height: 60px;
     }
 
-    #cactus{
+    #cactus {
         width: 80px;
         height: 80px;
     }
@@ -36,6 +36,13 @@ body, #game-container {
     #game-over-overlay {
         width: 90%;
         max-width: 350px;
+        height: auto; /* Pastikan overlay tidak terlalu tinggi */
+        padding: 20px; /* Tambahkan padding agar konten tidak menempel ke tepi */
+        text-align: center; /* Rata tengah konten */
+        display: flex; /* Gunakan flexbox untuk penataan */
+        flex-direction: column; /* Atur arah kolom */
+        justify-content: center; /* Pusatkan konten secara vertikal */
+        align-items: center; /* Pusatkan konten secara horizontal */
     }
 
     #game-over-message h1 {
@@ -68,7 +75,7 @@ body, #game-container {
         height: 30px;
     }
 
-    #dino{
+    #dino {
         width: 40px;
         height: 40px;
     }
@@ -111,7 +118,7 @@ body, #game-container {
 
     #game-title {
         width: 50%;
-      }
+    }
 
     #social-icon {
         font-size: 2rem; /* Ukuran ikon di layar besar */
