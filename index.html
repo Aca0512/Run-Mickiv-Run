@@ -24,9 +24,8 @@
     <audio id="collision-sound" src="audio/fail-sound-effect.mp3"></audio>
     <audio id="jump-sound" src="audio/meloncat.MP3"></audio>
     <audio id="step-sound" src="audio/langkah.MP3"></audio>
-    <audio id="background-sound" src="" loop></audio>
     <audio id="background-audio" src="audio/run mickiv run.mp3" preload="auto"></audio>
-    <div id="speed-notification" style="font-family: 'Poppins', sans-serif;">Speed increased!</div>
+    <audio id="background-sound" src="audio/backsound.mp3" loop></audio>
   </div>
 
   <div id="game-over-overlay" style="display: none;"> 
@@ -43,15 +42,49 @@
     <img src="image/grafis opening.png" alt="RUN MICKIV RUN" id="game-title">
 
     <div class="button" id="start-button" style="font-family: 'Poppins', sans-serif;">
-      <a href="javascript:void(0);">Play</a> 
+      <button href="javascript:void(0);">Play</button> 
     </div>
+
+    <!-- Menambahkan Font Awesome untuk ikon pengaturan -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <button class="setting-button" onclick="toggleSettings()">⚙️</button>
+ 
+    <div id="start-overlay" class="overlay">
+      <div id="obstacle3"></div> <!-- Existing content -->
+      
+      <img src="image/grafis opening.png" alt="RUN MICKIV RUN" id="game-title">
+  
+      <div class="button" id="start-button" style="font-family: 'Poppins', sans-serif;">
+          <button onclick="startGame()">Play</button> <!-- Tombol Play -->
+      </div>
+  
+      <button class="setting-button" onclick="toggleSettings()">⚙️</button>
+  
+      <div id="settings-modal" class="settings-modal" style="display: none;">
+        <div class="settings-content">
+            <h2>Setting</h2>
+            <label for="volume-slider">Volume:</label>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.1" value="1">
+            <button id="mute-button">Mute</button>
+            <button id="adjust-layout-button">Adjust Layout</button>
+            <button onclick="toggleSettings()">Tutup</button>
+        </div>
+    </div>
+      
+      <div class="social-handles">
+          <a href="https://www.instagram.com/arkivvilmansa/" class="social-icon instagram" target="_blank" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+          </a>
+      </div>
+  </div>
     
     <div class="social-handles">
       <a href="https://www.instagram.com/arkivvilmansa/" class="social-icon instagram" target="_blank" aria-label="Instagram">
         <i class="fab fa-instagram"></i>
       </a>
     </div>
-  </div>    
+  </div>  
 
   <script src="script.js"></script>
   
