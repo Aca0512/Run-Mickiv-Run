@@ -18,13 +18,59 @@ const stepSound = document.getElementById('step-sound'); // Ambil elemen suara l
 const obstacle3 = document.getElementById('obstacle3');
 const winScreen = document.getElementById('win-screen');
 const initialObstacle3Speed = 5; // Store initial speed for reset
-const backgroundSound = document.getElementById('background-sound')
 const mickiv = document.getElementById('mickiv');
 const backgroundAudio = document.getElementById('background-audio');
+const backgroundSound = document.getElementById('background-sound');
+const volumeSlider = document.getElementById('volume-slider');
+const muteButton = document.getElementById('mute-button');
+let isMuted = false;
+
+function toggleSettings() {
+  const modal = document.getElementById('settings-modal');
+  const gameContainer = document.getElementById('game-container');
+  
+  if (modal.style.display === 'none' || modal.style.display === '') {
+      modal.style.display = 'flex'; // Menampilkan modal
+      gameContainer.classList.add('paused'); // Menghentikan animasi
+  } else {
+      modal.style.display = 'none'; // Menyembunyikan modal
+      gameContainer.classList.remove('paused'); // Menghapus class paused
+  }
+}
+
+function pauseBackgroundAnimation() {
+  const gameContainer = document.getElementById('game-container');
+  gameContainer.style.animationPlayState = 'paused'; // Pause the background animation
+}
+
+function resumeBackgroundAnimation() {
+  const gameContainer = document.getElementById('game-container');
+  gameContainer.style.animationPlayState = 'running'; // Resume the background animation
+}
+
+// Set initial volume
+backgroundSound.volume = volumeSlider.value;
+
+// Event listener for volume slider
+volumeSlider.addEventListener('input', (event) => {
+    backgroundSound.volume = event.target.value; // Adjust volume based on slider value
+});
+
+// Function to toggle mute
+function toggleMute() {
+  isMuted = !isMuted;
+  backgroundSound.muted = isMuted; // Mute or unmute the sound
+
+  // Update button text based on mute state
+  muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
+}
+
+// Event listener for the mute button
+muteButton.addEventListener('click', toggleMute);
 
 function setViewportHeight() {
   // Hitung tinggi viewport dalam pixel
-  let vh = window.innerHeight * 0.01;
+  let vh = window.innerHeight * 0.01; 
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
@@ -49,17 +95,29 @@ function moveObstacle3() {
     }, 20);
 }
 
+// Fungsi untuk memulai permainan
 function startGame() {
-  lockToLandscape();
-  backgroundSound.pause();
-  backgroundSound.currentTime = 0;
+  const gameContainer = document.getElementById('game-container');
+  const startOverlay = document.getElementById('start-overlay');
+  const settingsModal = document.getElementById('settings-modal');
+  
+  adjustLayout();
 
   startOverlay.style.display = 'none';
+  settingsModal.style.display = 'none';
+  gameContainer.classList.remove('paused'); // Menghapus class paused untuk memulai animasi
+  backgroundSound.pause();
+
+  // Mulai animasi latar belakang
+  gameContainer.style.animation = 'moveBackground 70s linear infinite'; // Pastikan animasi dimulai
+
+  // Reset posisi dan tampilkan obstacle
   dino.style.display = 'block';
   cactus.style.display = 'block';
   obstacle2.style.display = 'block';
   obstacle3.style.display = 'block';
 
+  // Reset kecepatan ke nilai awal
   cactusSpeed = initialCactusSpeed;
   obstacle2Speed = initialObstacle2Speed;
   obstacle3Speed = initialObstacle3Speed;
@@ -69,13 +127,16 @@ function startGame() {
   obstacle2.style.right = `${-0.7 * window.innerWidth}px`; // Posisi obstacle2 50% dari lebar layar
   obstacle3.style.right = `${-0.4 * window.innerWidth}px`; // Posisi obstacle3 40% dari lebar layar
 
+  // Mulai animasi lainnya
   if (grass) grass.style.animation = 'grass-animation infinite linear';
-
   startRunAnimation();
   gameStarted = true;
   gameInterval = setInterval(updateGame, 20);
   moveObstacle3();
 }
+
+// Event listener untuk tombol play
+document.getElementById('start-button').addEventListener('click', startGame);
 
 function gameOver() {
   if (screen.orientation && screen.orientation.unlock) {
@@ -200,6 +261,8 @@ function restartGame() {
   // Sembunyikan overlay game over
   gameOverOverlay.style.display = 'none';
   
+  backgroundSound.play();
+
   // Reset posisi dan tampilan dino
   dino.style.left = '100px';
   dino.style.bottom = '-30px';
@@ -230,6 +293,18 @@ function restartGame() {
   backgroundAudio.currentTime = 0; // Set waktu ke 0
   backgroundAudio.play(); // Mainkan audio
 }
+
+// Mute/Unmute the background sound
+muteButton.addEventListener('click', () => {
+  if (isMuted) {
+      backgroundSound.play();
+      muteButton.innerText = 'Mute';
+  } else {
+      backgroundSound.pause();
+      muteButton.innerText = 'Unmute';
+  }
+  isMuted = !isMuted; // Toggle mute state
+});
 
 // Event listener for start button
 startButton.addEventListener('click', startGame);
@@ -495,7 +570,7 @@ function jump() {
       }, 550); // Adjust cooldown duration as needed
 
       dino.src = runImages[currentRunImageIndex]; // Return to running image
-    }, 470); // Adjust jump duration as needed
+    }, 500); // Adjust jump duration as needed 
   }
 }
 
@@ -553,18 +628,79 @@ function checkOrientation() {
 window.addEventListener('resize', checkOrientation);
 document.addEventListener('DOMContentLoaded', checkOrientation);
 
-const canvas = document.getElementById('gameCanvas');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-// Control bird jump on keydown (for desktop)
-document.addEventListener('keydown', () => {
-  if (isGameOver) return;
-  birdTop -= jumpHeight;
-});
-
 // Control bird jump on touchstart (for mobile and tablet)
 document.addEventListener('touchstart', () => {
   if (isGameOver) return;
   birdTop -= jumpHeight;
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const gameContainer = document.getElementById('game-container');
+  gameContainer.classList.add('paused'); // Menghentikan animasi saat awal
+  backgroundSound.play();
+  backgroundSound.loop = true; // Loop the sound continuously
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const adjustLayoutButton = document.getElementById('adjust-layout-button');
+  adjustLayoutButton.addEventListener('click', function() {
+      adjustLayout();
+      toggleSettings(); // Tutup modal pengaturan setelah penyesuaian
+  });
+});
+
+// Fungsi untuk menutup pengaturan
+function closeSettings() {
+  const modal = document.getElementById('settings-modal');
+  const gameContainer = document.getElementById('game-container');
+  
+  modal.style.display = 'none';
+  // Hanya jalankan animasi jika game sudah dimulai
+  if (!document.getElementById('start-overlay').style.display === 'none') {
+      gameContainer.classList.remove('paused');
+  }
+}
+
+function adjustLayout() {
+  const gameContainer = document.getElementById('game-container');
+  const dino = document.getElementById('dino');
+  const cactus = document.getElementById('cactus');
+  const obstacle2 = document.getElementById('obstacle2');
+  const scoreElement = document.getElementById('score');
+
+  // Dapatkan ukuran layar
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  // Sesuaikan ukuran game container
+  gameContainer.style.width = `${screenWidth}px`;
+  gameContainer.style.height = `${screenHeight}px`;
+
+  // Sesuaikan ukuran dan posisi karakter
+  const dinoSize = Math.min(screenWidth * 0.1, screenHeight * 0.2);
+  dino.style.width = `${dinoSize}px`;
+  dino.style.height = `${dinoSize}px`;
+  dino.style.bottom = `${screenHeight * 0.1}px`;
+  dino.style.left = `${screenWidth * 0.1}px`;
+
+  // Sesuaikan ukuran dan posisi rintangan
+  const obstacleSize = Math.min(screenWidth * 0.08, screenHeight * 0.16);
+  cactus.style.width = `${obstacleSize}px`;
+  cactus.style.height = `${obstacleSize}px`;
+  cactus.style.bottom = `${screenHeight * 0.1}px`;
+
+  obstacle2.style.width = `${obstacleSize}px`;
+  obstacle2.style.height = `${obstacleSize}px`;
+  obstacle2.style.bottom = `${screenHeight * 0.1}px`;
+
+  // Sesuaikan ukuran dan posisi skor
+  scoreElement.style.fontSize = `${Math.min(screenWidth * 0.05, 24)}px`;
+  scoreElement.style.top = `${screenHeight * 0.05}px`;
+
+  // Sesuaikan kecepatan game berdasarkan ukuran layar
+  cactusSpeed = screenWidth * 0.005;
+  obstacle2Speed = screenWidth * 0.005;
+
+  // Sesuaikan tinggi lompatan
+  jumpHeight = screenHeight * 0.3;
+}
