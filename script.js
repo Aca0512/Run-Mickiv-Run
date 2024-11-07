@@ -100,8 +100,6 @@ function startGame() {
   const gameContainer = document.getElementById('game-container');
   const startOverlay = document.getElementById('start-overlay');
   const settingsModal = document.getElementById('settings-modal');
-  
-  adjustLayout();
 
   startOverlay.style.display = 'none';
   settingsModal.style.display = 'none';
@@ -641,14 +639,6 @@ document.addEventListener('DOMContentLoaded', function() {
   backgroundSound.loop = true; // Loop the sound continuously
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  const adjustLayoutButton = document.getElementById('adjust-layout-button');
-  adjustLayoutButton.addEventListener('click', function() {
-      adjustLayout();
-      toggleSettings(); // Tutup modal pengaturan setelah penyesuaian
-  });
-});
-
 // Fungsi untuk menutup pengaturan
 function closeSettings() {
   const modal = document.getElementById('settings-modal');
@@ -659,48 +649,4 @@ function closeSettings() {
   if (!document.getElementById('start-overlay').style.display === 'none') {
       gameContainer.classList.remove('paused');
   }
-}
-
-function adjustLayout() {
-  const gameContainer = document.getElementById('game-container');
-  const dino = document.getElementById('dino');
-  const cactus = document.getElementById('cactus');
-  const obstacle2 = document.getElementById('obstacle2');
-  const scoreElement = document.getElementById('score');
-
-  // Dapatkan ukuran layar
-  const screenWidth = window.innerWidth;
-  const screenHeight = window.innerHeight;
-
-  // Sesuaikan ukuran game container
-  gameContainer.style.width = `${screenWidth}px`;
-  gameContainer.style.height = `${screenHeight}px`;
-
-  // Sesuaikan ukuran dan posisi karakter
-  const dinoSize = Math.min(screenWidth * 0.1, screenHeight * 0.2);
-  dino.style.width = `${dinoSize}px`;
-  dino.style.height = `${dinoSize}px`;
-  dino.style.bottom = `${screenHeight * 0.1}px`;
-  dino.style.left = `${screenWidth * 0.1}px`;
-
-  // Sesuaikan ukuran dan posisi rintangan
-  const obstacleSize = Math.min(screenWidth * 0.08, screenHeight * 0.16);
-  cactus.style.width = `${obstacleSize}px`;
-  cactus.style.height = `${obstacleSize}px`;
-  cactus.style.bottom = `${screenHeight * 0.1}px`;
-
-  obstacle2.style.width = `${obstacleSize}px`;
-  obstacle2.style.height = `${obstacleSize}px`;
-  obstacle2.style.bottom = `${screenHeight * 0.1}px`;
-
-  // Sesuaikan ukuran dan posisi skor
-  scoreElement.style.fontSize = `${Math.min(screenWidth * 0.05, 24)}px`;
-  scoreElement.style.top = `${screenHeight * 0.05}px`;
-
-  // Sesuaikan kecepatan game berdasarkan ukuran layar
-  cactusSpeed = screenWidth * 0.005;
-  obstacle2Speed = screenWidth * 0.005;
-
-  // Sesuaikan tinggi lompatan
-  jumpHeight = screenHeight * 0.3;
 }
