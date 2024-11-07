@@ -1,207 +1,129 @@
-/* Tambahkan atau perbarui bagian ini di responsif.css */
-
-/* Styling untuk Modal Pengaturan */
-.settings-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+/* Dasar Styling untuk Mobile */
+body, #game-container {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
-.settings-content {
-    background-color: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 400px;
-    position: relative;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-.settings-content h2 {
-    color: #e1306c;
-    margin-bottom: 20px;
-    font-size: 24px;
-    text-align: center;
-}
-
-.settings-content label {
-    display: block;
-    margin: 10px 0;
-    color: #333;
-    font-size: 16px;
-}
-
-/* Styling untuk tombol dalam modal pengaturan */
-.settings-content button {
-    background: linear-gradient(to right, #EB3678, #eb0257);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 10px 0;
-    width: 100%;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.settings-content button:hover {
-    background: linear-gradient(to right, #eb0257, #EB3678);
-    transform: scale(1.02);
-}
-
-/* Volume Slider styling */
-.settings-content #volume-slider {
-    width: 100%;
-    margin: 15px 0;
-    -webkit-appearance: none;
-    height: 8px;
-    background: linear-gradient(to right, #ff6b6b, #ff8585);
-    border-radius: 10px;
-    outline: none;
-}
-
-.settings-content #volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
-    background: white;
-    border: 2px solid #ff6b6b;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.settings-content #volume-slider::-webkit-slider-thumb:hover {
-    background: #ff6b6b;
-    transform: scale(1.1);
-}
-
-/* Responsif untuk berbagai ukuran layar */
+/* Responsif untuk layar lebih kecil dari 768px (Tablet dan Ponsel) */
 @media (max-width: 768px) {
-    .settings-content {
-        width: 85%;
-        padding: 20px;
+    /* Atur ukuran dan posisi elemen game */
+    #game-container {
+        width: 100%;
+        height: 100vh;
     }
 
-    .settings-content h2 {
-        font-size: 20px;
+    #obstacle2 {
+        width: 60px; /* Sesuaikan ukuran untuk layar kecil */
+        height: 40px;
     }
 
-    .settings-content button {
-        padding: 10px 15px;
-        font-size: 14px;
+    #dino {
+        width: 40px;
+        height: 40px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+    #cactus {
+        width: 80px;
+        height: 80px;
+    }
+
+    #score {
+        font-size: 1.5rem; /* Ukuran font lebih kecil */
+        top: 10px; /* Posisikan skor sedikit lebih tinggi */
+    }
+
+    #game-over-overlay {
+        width: 70%;
+        max-width: 350px;
+        height: auto; /* Pastikan overlay tidak terlalu tinggi */
+        padding: 20px; /* Tambahkan padding agar konten tidak menempel ke tepi */
+        text-align: center; /* Rata tengah konten */
+        display: flex; /* Gunakan flexbox untuk penataan */
+        flex-direction: column; /* Atur arah kolom */
+        justify-content: center; /* Pusatkan konten secara vertikal */
+        align-items: center; /* Pusatkan konten secara horizontal */
+    }
+
+    #game-over-message h1 {
+        font-size: 2rem;
+    }
+
+    #game-over-message p {
+        font-size: 1.5rem;
+    }
+
+    #restart-button {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+
+    .button a {
+        font-size: 24px;
+        padding: 10px 40px;
+    }
+
+    .social-icon {
+        font-size: 1rem;
     }
 }
 
+/* Responsif untuk layar lebih kecil dari 480px (Ponsel) */
 @media (max-width: 480px) {
-    .settings-content {
-        width: 90%;
-        padding: 15px;
+    #obstacle2 {
+        width: 40px;
+        height: 30px;
     }
 
-    .settings-content h2 {
-        font-size: 18px;
+    #dino {
+        width: 20px;
+        height: 20px;
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
     }
 
-    .settings-content button {
-        padding: 8px 12px;
+    #cactus {
+        width: 60px;
+        height: 60px;
+    }
+
+    #score {
+        font-size: 1.2rem;
+        top: 10px;
+    }
+
+    #game-over-overlay {
+        width: 70%;
+        height: auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    #game-over-message h1 {
+        font-size: 1.8rem;
+    }
+
+    #restart-button {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+
+    #start-button a {
+        font-size: 1.2rem;
+        height: 35px;
         font-size: 12px;
     }
 
-    .settings-content label {
-        font-size: 14px;
+    #game-title {
+        width: 50%;
     }
+
+    #social-icon {
+        font-size: 2rem; /* Ukuran ikon di layar besar */
+    }  
 }
 
-/* Animasi untuk modal */
-@keyframes modalFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.settings-modal.active {
-    display: flex;
-}
-
-.settings-modal.active .settings-content {
-    animation: modalFadeIn 0.3s ease-out forwards;
-}
-
-/* Styling untuk tombol pengaturan */
-.setting-button {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
-    z-index: 100;
-}
-
-.setting-button:hover {
-    transform: rotate(90deg);
-    background: #f0f0f0;
-}
-
-/* Styling untuk tombol Adjust Layout */
-#adjust-layout-button {
-    background: linear-gradient(to right, #4CAF50, #45a049);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 10px 0;
-    width: 100%;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-#adjust-layout-button:hover {
-    background: linear-gradient(to right, #45a049, #4CAF50);
-    transform: scale(1.02);
-}
-
-/* Styling untuk tombol Mute */
-#mute-button {
-    background: linear-gradient(to right, #ff4444, #cc0000);
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 10px 0;
-    width: 100%;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-#mute-button:hover {
-    background: linear-gradient(to right, #cc0000, #ff4444);
-    transform: scale(1.02);
-}
-
-/* Efek hover untuk semua tombol dalam modal */
-.settings-content button:active {
-    transform: scale(0.98);
-}
