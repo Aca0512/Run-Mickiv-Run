@@ -73,7 +73,7 @@ body, #game-container {
     }
 
     #game-title {
-        width: 50%; /* Kurangi lebar menjadi 70% dari lebar layar */
+        width: 20%; /* Kurangi lebar menjadi 70% dari lebar layar */
         max-width: 200px; /* Batasi maksimum lebar */
         height: auto; /* Pertahankan rasio aspek */
         margin: 0 auto; /* Pusatkan gambar */
