@@ -13,6 +13,14 @@ body, #game-container {
         height: 100vh;
     }
 
+    #mute-button {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+        bottom: 20px;
+        left: 15px;
+    }
+
     #obstacle2 {
         width: 60px; /* Sesuaikan ukuran untuk layar kecil */
         height: 40px;
@@ -73,6 +81,15 @@ body, #game-container {
 
 /* Responsif untuk layar lebih kecil dari 480px (Ponsel) */
 @media (max-width: 480px) {
+
+    #mute-button {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        bottom: 15px;
+        left: 10px;
+    }
+
     #obstacle2 {
         width: 40px;
         height: 30px;
@@ -126,4 +143,3 @@ body, #game-container {
         font-size: 2rem; /* Ukuran ikon di layar besar */
     }  
 }
-
