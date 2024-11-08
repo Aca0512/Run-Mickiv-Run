@@ -63,9 +63,18 @@ body, #game-container {
         padding: 10px 20px;
     }
 
+      .button {
+        margin: 10px; /* Kurangi margin */
+    }
+
     .button a {
-        font-size: 15px;
-        padding: 5px 20px;
+        font-size: 24px; /* Ukuran font lebih kecil */
+        padding: 15px 50px; /* Sesuaikan padding */
+        box-shadow: inset 0 1px 0 #FFB6C1, 0 5px 0 #FF1493; /* Kurangi shadow */
+    }
+
+    .button a:active {
+        top: 5px; /* Kurangi jarak saat ditekan */
     }
 
     .social-icon {
