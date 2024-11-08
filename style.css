@@ -344,7 +344,7 @@ margin:20px;
 }
 
 /* TOMBOL PLAY */
-.button button{
+.button a {
 color: white;
 font-family: 'Poppins', sans-serif;
 font-weight: bold;
@@ -369,7 +369,7 @@ box-shadow: inset 0 1px 0 #FFB6C1, 0 10px 0 #C71585; /* Adjusted shadow colors *
 border-radius: 5px;
 }
 
-.button button:active {
+.button a:active {
 top: 10px;
 background-color: #C71585; /* Darker pink color for active state */
 
@@ -445,77 +445,46 @@ border-radius: 5px;
   }
 }
 
-.social-icon {
-display: inline-block;
-padding: 10px;
-border-radius: 50%;
-/* Menggunakan gradien warna untuk latar belakang */
-background: linear-gradient(to bottom right, #f0f0f0, #e0e0e0);
-color: #333;
-text-align: center;
-text-decoration: none;
-font-size: 50px;
-font-weight: bold;
-box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-transition: all 0.3s ease-in-out;
-}
-
-.social-icon:hover {
-background: linear-gradient(to bottom right, #d0d0d0, #c0c0c0);
-transform: scale(1.1);
-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.social-icon.instagram {
-color: #e1306c;
-}
-
-.social-icon.instagram:hover {
-color: #fff;
-background: linear-gradient(to bottom right, #e1306c, #c2245a);
-}
-
 .social-handles {
-position: fixed;
-bottom: 10px;
-left: 60px;
-transform: translateX(-50%);
-display: flex;
-justify-content: center;
-gap: 15px;
-padding: 10px;
-z-index: 500;
+  position: absolute;
+  bottom: 20px; /* Sesuaikan dengan posisi tombol mute */
+  left: 20px; /* Sesuaikan dengan posisi tombol mute */
+  z-index: 10;
 }
 
 .social-icon {
-display: inline-block;
-padding: 15px;
-border-radius: 30%;
-width: 35px;
-background-color: white;
-color: #333;
-text-align: center;
-text-decoration: none;
-font-size: 24px;
-font-weight: bold;
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  padding: 10px;
+  font-size: 24px; /* Sesuaikan ukuran ikon */
+  cursor: pointer;
+  background-color: white;
+  color: white;
+  border: none;
+  border-radius: 50%; /* Membuat tombol bulat */
+  width: 40px; /* Lebar tombol */
+  height: 40px; /* Tinggi tombol */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .social-icon:hover {
-background-color: #f0f0f0;
-transform: scale(1.1);
-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  background-color: rgba(136, 32, 32, 0.877); /* Efek hover sama seperti tombol mute */
+  transform: scale(1.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .social-icon.instagram {
-color: #e1306c;
+  color: #e1306c;
+  background-color: white;
 }
 
 .social-icon.instagram:hover {
-color: #fff;
-background-color: #e1306c;
-}
+  color: white;
+  background-color: #e1306c;
+}  
 
 /* Overlay styles */
 .overlay {
@@ -558,210 +527,31 @@ html, body {
   overflow: hidden;
 }
 
-/* Volume Slider Container */
 #volume-slider {
-  margin: 20px 0;
-  -webkit-appearance: none;
-  appearance: none;
-  width: 200px;
-  height: 8px;
-  background: linear-gradient(to right, #ff6b6b, #ff8585);
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  outline: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  margin: 10px 0; /* Adjust margin as needed */
   position: absolute;
-  bottom: 420px;
-  left: 580px;
+  right: 12000px;
 }
 
-/* Hover effect untuk slider track */
-#volume-slider:hover {
-  background: linear-gradient(to right, #ff5252, #ff7676);
-  box-shadow: 0 4px 15px rgba(255, 82, 82, 0.3);
-  transform: scale(1.02);
-}
-
-/* Styling untuk thumb (tombol geser) */
-#volume-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 25px;
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  border: 2px solid #ff6b6b;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-/* Hover effect untuk thumb */
-#volume-slider::-webkit-slider-thumb:hover {
-  background: linear-gradient(145deg, #ff6b6b, #ff8585);
-  border-color: #ffffff;
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-}
-
-/* Active state untuk thumb */
-#volume-slider::-webkit-slider-thumb:active {
-  transform: scale(0.95);
-  background: linear-gradient(145deg, #ff5252, #ff6b6b);
-}
-
-/* Firefox specific styling */
-#volume-slider::-moz-range-thumb {
-  width: 25px;
-  height: 25px;
-  background: linear-gradient(145deg, #ffffff, #f0f0f0);
-  border: 2px solid #ff6b6b;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
-  transition: all 0.3s ease;
-}
-
-#volume-slider::-moz-range-thumb:hover {
-  background: linear-gradient(145deg, #ff6b6b, #ff8585);
-  border-color: #ffffff;
-  transform: scale(1.1);
-}
-
-/* Track styling untuk Firefox */
-#volume-slider::-moz-range-track {
-  height: 8px;
-  background: linear-gradient(to right, #ff6b6b, #ff8585);
-  border-radius: 10px;
-  border: none;
-}
-
-/* Focus state */
-#volume-slider:focus {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
-}
-
-/* Animasi glowing effect */
-@keyframes glow {
-  0% {
-    box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-  }
-  100% {
-    box-shadow: 0 0 5px rgba(255, 107, 107, 0.3);
-  }
-}
-
-#volume-slider:hover {
-  animation: glow 1.5s infinite;
-}
-
-/* Mute Button */
 #mute-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 24px; /* Sesuaikan ukuran ikon */
   cursor: pointer;
-  position: absolute;
-  bottom: 380px;
-  left: -100000px;
-  background-color: #f44336; /* Red color */
+  background-color: white;
   color: white;
   border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.3s; /* Add transition for hover effect */
-}
-
-#mute-button:hover {
-  background-color: #d32f2f; /* Darker red on hover */
-  transform: scale(1.05); /* Slightly scale up on hover */
-}
-
-/* Setting Button */
-.setting-button {
-  background-color: #f6faff;
-  color: white;
-  padding: 15px 15px;
-  font-size: 25px;
+  border-radius: 50%; /* Membuat tombol bulat */
   position: absolute;
-  bottom: 95px;
-  left: 28px;
-  border: none;
-  border-radius: 25%;
-  cursor: pointer;
-  margin-top: 10px;
-  text-align: center;
-  transition: background-color 0.3s, transform 0.3s;
-
-  /* Hover effect */
-  &:hover {
-    background-color: #e6f2ff;
-    transform: scale(1.05);
-  }
-}
-
-/* Settings Modal */
-.settings-modal {
-  display: none; /* Hidden by default */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  bottom: 90px;
+  left: 25px;
+  width: 50px; /* Lebar tombol */
+  height: 50px; /* Tinggi tombol */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 600;
-}
-
-.settings-content {
-  background-color: white;
-  height: 450px;
-  width: 350px;
-  border-radius: 8px;
-  max-width: 300px;
-  text-align: center;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
-}
-
-.settings-content h2 {
-  margin-top: 0;
-  color: #e1306c; /* Darker title color */
-  bottom: 480px;
-  left: 640px;
-  position: absolute;
-}
-
-.settings-content label {
-  display: block;
-  margin: 10px 0;
-  color: #e1306c; /* Darker label color */
-  position: absolute;
-  bottom: 450px;
-  left: 650px;
-}
-
-.settings-content button {
-  background-color: #007BFF;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
   transition: background-color 0.3s;
-  position: absolute;
-  bottom: 110px;
-  left: 650px;
+}
 
-  /* Hover effect */
-  &:hover {
-    background-color: #005cbf;
-  }
+#mute-button:hover {
+  background-color: rgb(32, 114, 209); /* Efek hover */
 }
