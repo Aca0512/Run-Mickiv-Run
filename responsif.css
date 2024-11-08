@@ -71,6 +71,14 @@ body, #game-container {
     .social-icon {
         font-size: 1rem;
     }
+
+    #game-title {
+        width: 70%; /* Kurangi lebar menjadi 70% dari lebar layar */
+        max-width: 400px; /* Batasi maksimum lebar */
+        height: auto; /* Pertahankan rasio aspek */
+        margin: 0 auto; /* Pusatkan gambar */
+        display: block;
+    }
 }
 
 /* Responsif untuk layar lebih kecil dari 480px (Ponsel) */
