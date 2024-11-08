@@ -23,30 +23,32 @@ const backgroundAudio = document.getElementById('background-audio');
 const backgroundSound = document.getElementById('background-sound');
 const volumeSlider = document.getElementById('volume-slider');
 const muteButton = document.getElementById('mute-button');
-let isMuted = false;
+const closeSettingsButton = document.getElementById('close-settings-button');
+const volumeSliderSettings = document.getElementById('volume-slider-settings');
+const themeSelector = document.getElementById('theme-selector');
 
-function toggleSettings() {
-  const modal = document.getElementById('settings-modal');
-  const gameContainer = document.getElementById('game-container');
-  
-  if (modal.style.display === 'none' || modal.style.display === '') {
-      modal.style.display = 'flex'; // Menampilkan modal
-      gameContainer.classList.add('paused'); // Menghentikan animasi
+
+// Handle volume change
+volumeSliderSettings.addEventListener('input', (event) => {
+  const volume = event.target.value;
+  // Set the volume for all audio elements
+  document.getElementById('background-sound').volume = volume;
+  document.getElementById('jump-sound').volume = volume;
+  document.getElementById('step-sound').volume = volume;
+  document.getElementById('collision-sound').volume = volume;
+});
+
+// Handle theme change
+themeSelector.addEventListener('change', (event) => {
+  const theme = event.target.value;
+  if (theme === 'dark') {
+    document.body.style.backgroundColor = '#333'; // Dark background
+    document.body.style.color = '#fff'; // Light text
   } else {
-      modal.style.display = 'none'; // Menyembunyikan modal
-      gameContainer.classList.remove('paused'); // Menghapus class paused
+    document.body.style.backgroundColor = '#fff'; // Light background
+    document.body.style.color = '#000'; // Dark text
   }
-}
-
-function pauseBackgroundAnimation() {
-  const gameContainer = document.getElementById('game-container');
-  gameContainer.style.animationPlayState = 'paused'; // Pause the background animation
-}
-
-function resumeBackgroundAnimation() {
-  const gameContainer = document.getElementById('game-container');
-  gameContainer.style.animationPlayState = 'running'; // Resume the background animation
-}
+});
 
 // Set initial volume
 backgroundSound.volume = volumeSlider.value;
@@ -62,11 +64,13 @@ function toggleMute() {
   backgroundSound.muted = isMuted; // Mute or unmute the sound
 
   // Update button text based on mute state
-  muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
+  muteButton.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
 }
 
-// Event listener for the mute button
-muteButton.addEventListener('click', toggleMute);
+// Mute 
+muteButton.addEventListener('click', function() {
+  this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+});
 
 function setViewportHeight() {
   // Hitung tinggi viewport dalam pixel
@@ -95,27 +99,17 @@ function moveObstacle3() {
     }, 20);
 }
 
-// Fungsi untuk memulai permainan
 function startGame() {
-  const gameContainer = document.getElementById('game-container');
-  const startOverlay = document.getElementById('start-overlay');
-  const settingsModal = document.getElementById('settings-modal');
+  lockToLandscape();
+  backgroundSound.pause();
+  backgroundSound.currentTime = 0;
 
   startOverlay.style.display = 'none';
-  settingsModal.style.display = 'none';
-  gameContainer.classList.remove('paused'); // Menghapus class paused untuk memulai animasi
-  backgroundSound.pause();
-
-  // Mulai animasi latar belakang
-  gameContainer.style.animation = 'moveBackground 70s linear infinite'; // Pastikan animasi dimulai
-
-  // Reset posisi dan tampilkan obstacle
   dino.style.display = 'block';
   cactus.style.display = 'block';
   obstacle2.style.display = 'block';
   obstacle3.style.display = 'block';
 
-  // Reset kecepatan ke nilai awal
   cactusSpeed = initialCactusSpeed;
   obstacle2Speed = initialObstacle2Speed;
   obstacle3Speed = initialObstacle3Speed;
@@ -125,16 +119,13 @@ function startGame() {
   obstacle2.style.right = `${-0.7 * window.innerWidth}px`; // Posisi obstacle2 50% dari lebar layar
   obstacle3.style.right = `${-0.4 * window.innerWidth}px`; // Posisi obstacle3 40% dari lebar layar
 
-  // Mulai animasi lainnya
   if (grass) grass.style.animation = 'grass-animation infinite linear';
+
   startRunAnimation();
   gameStarted = true;
   gameInterval = setInterval(updateGame, 20);
   moveObstacle3();
 }
-
-// Event listener untuk tombol play
-document.getElementById('start-button').addEventListener('click', startGame);
 
 function gameOver() {
   if (screen.orientation && screen.orientation.unlock) {
@@ -296,10 +287,10 @@ function restartGame() {
 muteButton.addEventListener('click', () => {
   if (isMuted) {
       backgroundSound.play();
-      muteButton.innerText = 'Mute';
+      muteButton.innerText = '🔊';
   } else {
       backgroundSound.pause();
-      muteButton.innerText = 'Unmute';
+      muteButton.innerText = '🔇';
   }
   isMuted = !isMuted; // Toggle mute state
 });
@@ -334,6 +325,7 @@ let currentImageIndex = 0;
 let screenWidth = window.innerWidth;
 let cactusWidth = screenWidth * 0.1; // 10% dari lebar layar
 cactus.style.width = `${cactusWidth}px`;
+let isMuted = false;
 
 function startRunAnimation() {
     runAnimationInterval = setInterval(() => {
@@ -626,27 +618,18 @@ function checkOrientation() {
 window.addEventListener('resize', checkOrientation);
 document.addEventListener('DOMContentLoaded', checkOrientation);
 
+const canvas = document.getElementById('gameCanvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+// Control bird jump on keydown (for desktop)
+document.addEventListener('keydown', () => {
+  if (isGameOver) return;
+  birdTop -= jumpHeight;
+});
+
 // Control bird jump on touchstart (for mobile and tablet)
 document.addEventListener('touchstart', () => {
   if (isGameOver) return;
   birdTop -= jumpHeight;
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-  const gameContainer = document.getElementById('game-container');
-  gameContainer.classList.add('paused'); // Menghentikan animasi saat awal
-  backgroundSound.play();
-  backgroundSound.loop = true; // Loop the sound continuously
-});
-
-// Fungsi untuk menutup pengaturan
-function closeSettings() {
-  const modal = document.getElementById('settings-modal');
-  const gameContainer = document.getElementById('game-container');
-  
-  modal.style.display = 'none';
-  // Hanya jalankan animasi jika game sudah dimulai
-  if (!document.getElementById('start-overlay').style.display === 'none') {
-      gameContainer.classList.remove('paused');
-  }
-}
