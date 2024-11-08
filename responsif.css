@@ -64,8 +64,8 @@ body, #game-container {
     }
 
     .button a {
-        font-size: 24px;
-        padding: 10px 40px;
+        font-size: 15px;
+        padding: 5px 20px;
     }
 
     .social-icon {
