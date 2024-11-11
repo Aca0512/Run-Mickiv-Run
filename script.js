@@ -27,6 +27,7 @@ const closeSettingsButton = document.getElementById('close-settings-button');
 const volumeSliderSettings = document.getElementById('volume-slider-settings');
 const themeSelector = document.getElementById('theme-selector');
 
+let isMuted = false;
 
 // Handle volume change
 volumeSliderSettings.addEventListener('input', (event) => {
@@ -58,18 +59,27 @@ volumeSlider.addEventListener('input', (event) => {
     backgroundSound.volume = event.target.value; // Adjust volume based on slider value
 });
 
-// Function to toggle mute
-function toggleMute() {
-  isMuted = !isMuted;
-  backgroundSound.muted = isMuted; // Mute or unmute the sound
-
-  // Update button text based on mute state
-  muteButton.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+// Fungsi untuk memulai background sound
+function playBackgroundSound() {
+  if (!isMuted) {
+    backgroundSound.play().catch(error => {
+      console.error("Error playing background sound:", error);
+    });
+  }
 }
 
-// Mute 
-muteButton.addEventListener('click', function() {
-  this.textContent = this.textContent === '🔊' ? '🔇' : '🔊';
+// Fungsi untuk pause background sound
+function pauseBackgroundSound() {
+  backgroundSound.pause();
+}
+
+// Event listener pada tombol mute
+muteButton.removeEventListener('click', toggleMute);
+muteButton.addEventListener('click', toggleMute);
+
+// Putar audio otomatis ketika halaman dimuat
+document.addEventListener('DOMContentLoaded', () => {
+  playBackgroundSound();
 });
 
 function setViewportHeight() {
@@ -130,6 +140,8 @@ function startGame() {
 function gameOver() {
   if (screen.orientation && screen.orientation.unlock) {
       screen.orientation.unlock();  // Unlock orientation
+
+      pauseBackgroundSound();
   }
 
   // Stop the game animation by clearing the animation property
@@ -281,19 +293,29 @@ function restartGame() {
 
   backgroundAudio.currentTime = 0; // Set waktu ke 0
   backgroundAudio.play(); // Mainkan audio
+
+   // Terapkan status mute saat permainan di-restart
+   backgroundSound.muted = isMuted; // Menerapkan status mute
+
+   // Periksa status mute dan putar ulang background sound jika tidak mute
+  if (!isMuted) {
+    playBackgroundSound();
+  }
+
+  playBackgroundSound();
 }
 
-// Mute/Unmute the background sound
-muteButton.addEventListener('click', () => {
+// Fungsi untuk toggle mute
+function toggleMute() {
+  isMuted = !isMuted;
   if (isMuted) {
-      backgroundSound.play();
-      muteButton.innerText = '🔊';
+    pauseBackgroundSound();
+    muteButton.innerText = '🔇';
   } else {
-      backgroundSound.pause();
-      muteButton.innerText = '🔇';
+    playBackgroundSound();
+    muteButton.innerText = '🔊';
   }
-  isMuted = !isMuted; // Toggle mute state
-});
+}
 
 // Event listener for start button
 startButton.addEventListener('click', startGame);
@@ -325,7 +347,7 @@ let currentImageIndex = 0;
 let screenWidth = window.innerWidth;
 let cactusWidth = screenWidth * 0.1; // 10% dari lebar layar
 cactus.style.width = `${cactusWidth}px`;
-let isMuted = false;
+
 
 function startRunAnimation() {
     runAnimationInterval = setInterval(() => {
@@ -519,9 +541,14 @@ function showWinScreen() {
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    // Play the background sound when the page loads and the start overlay is shown
-    backgroundSound.play();
+    // Menampilkan tampilan awal
+    startOverlay.style.display = 'flex';
+
+    // Memutar backsound saat tampilan awal ditampilkan
     backgroundSound.loop = true; // Loop the sound continuously
+    backgroundSound.play().catch(error => {
+        console.error("Error playing background sound:", error);
+    });
 });
 
 // Fungsi untuk mendeteksi apakah perangkat adalah mobile
@@ -614,9 +641,6 @@ function checkOrientation() {
     alert("Please rotate your device to landscape mode for better gameplay.");
   }
 }
-
-window.addEventListener('resize', checkOrientation);
-document.addEventListener('DOMContentLoaded', checkOrientation);
 
 const canvas = document.getElementById('gameCanvas');
 canvas.width = window.innerWidth;
