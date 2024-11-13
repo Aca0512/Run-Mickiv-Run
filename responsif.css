@@ -80,7 +80,7 @@ body, #game-container {
 
     #game-title {
         width: 60%; /* Atur lebar menjadi 60% dari lebar kontainer */
-        font-size: 2.5rem; /* Atur ukuran font sesuai kebutuhan */
+        font-size: 2rem; /* Atur ukuran font sesuai kebutuhan */
         margin: 0 auto; /* Pusatkan gambar */
     }
 }
@@ -135,9 +135,8 @@ body, #game-container {
         padding: 8px 16px;
     }
 
-    #start-button a {
-        font-size: 1.2rem;
-        height: 35px;
+    .button a {
+        font-size: 18px;
         font-size: 12px;
     }
 
@@ -148,6 +147,6 @@ body, #game-container {
     }
 
     #social-icon {
-        font-size: 2rem; /* Ukuran ikon di layar besar */
+        font-size: 1.5rem; /* Ukuran ikon di layar besar */
     }  
 }
