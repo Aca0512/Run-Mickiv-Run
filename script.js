@@ -348,7 +348,6 @@ let screenWidth = window.innerWidth;
 let cactusWidth = screenWidth * 0.1; // 10% dari lebar layar
 cactus.style.width = `${cactusWidth}px`;
 
-
 function startRunAnimation() {
     runAnimationInterval = setInterval(() => {
       if (!isJumping && !isGameOver) {
