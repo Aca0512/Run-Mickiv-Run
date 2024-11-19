@@ -115,6 +115,8 @@ function startGame() {
   backgroundSound.currentTime = 0;
 
   startOverlay.style.display = 'none';
+  gameOverOverlay.style.display = 'none';
+
   dino.style.display = 'block';
   cactus.style.display = 'block';
   obstacle2.style.display = 'block';
@@ -143,6 +145,9 @@ function gameOver() {
 
       pauseBackgroundSound();
   }
+
+  pauseBackgroundSound();
+  stopBackgroundAnimation(); // Hentikan animasi saat game over
 
   // Stop the game animation by clearing the animation property
   const gameContainer = document.getElementById('game-container');
@@ -186,6 +191,20 @@ function gameOver() {
 
   // Optionally, restart background sound for game over screen or menu
   backgroundSound.play(); // Play background sound again after game over
+}
+
+// Fungsi untuk menghentikan animasi background
+function stopBackgroundAnimation() {
+  const gameContainer = document.getElementById('game-container');
+  gameContainer.style.animation = 'none'; // Hentikan animasi background
+  if (grass) grass.style.animation = 'none'; // Hentikan animasi rumput jika ada
+}
+
+// Fungsi untuk melanjutkan animasi background
+function resumeBackgroundAnimation() {
+  const gameContainer = document.getElementById('game-container');
+  gameContainer.style.animation = 'moveBackground 70s linear infinite';
+  if (grass) grass.style.animation = 'grass-animation 5s infinite linear';
 }
 
 function updateGame() {
@@ -263,6 +282,9 @@ function restartGame() {
   gameOverOverlay.style.display = 'none';
   
   backgroundSound.play();
+  
+  // Lanjutkan animasi saat restart
+  resumeBackgroundAnimation(); 
 
   // Reset posisi dan tampilan dino
   dino.style.left = '100px';
