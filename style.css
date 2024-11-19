@@ -150,7 +150,7 @@
 #game-over-message {
   font-size: 20px;
   font-family: 'Poppins', sans-serif;
-  background-image: url('image/Asset 26.png');
+  background-image: url('image/Asset 27.png');
   background-size: cover;
   padding: 80px 200px;
   height: 20;
@@ -269,7 +269,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('image/Asset 25.png');
+  background-image: url('image/Asset 27.png');
   background-size: cover;
   background-position: left center; /* Memulai posisi background dari kiri */
   color: white;
